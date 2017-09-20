@@ -1,0 +1,90 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "Aphid",
+      "reason": null,
+      "repositoryURL": "https://github.com/IBM-Swift/Aphid.git",
+      "version": "0.5.1"
+    },
+    {
+      "package": "COpenSSL",
+      "reason": null,
+      "repositoryURL": "https://github.com/PerfectlySoft/Perfect-COpenSSL.git",
+      "version": "2.0.6"
+    },
+    {
+      "package": "MariaDB",
+      "reason": null,
+      "repositoryURL": "https://github.com/PerfectlySoft/Perfect-MariaDB.git",
+      "version": "2.0.3"
+    },
+    {
+      "package": "PerfectCrypto",
+      "reason": null,
+      "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Crypto.git",
+      "version": "1.1.1"
+    },
+    {
+      "package": "PerfectHTTP",
+      "reason": null,
+      "repositoryURL": "https://github.com/PerfectlySoft/Perfect-HTTP.git",
+      "version": "2.2.4"
+    },
+    {
+      "package": "PerfectHTTPServer",
+      "reason": null,
+      "repositoryURL": "https://github.com/PerfectlySoft/Perfect-HTTPServer.git",
+      "version": "2.3.4"
+    },
+    {
+      "package": "PerfectLib",
+      "reason": null,
+      "repositoryURL": "https://github.com/PerfectlySoft/PerfectLib.git",
+      "version": "2.0.11"
+    },
+    {
+      "package": "PerfectNet",
+      "reason": null,
+      "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Net.git",
+      "version": "2.1.18"
+    },
+    {
+      "package": "PerfectThread",
+      "reason": null,
+      "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Thread.git",
+      "version": "2.0.12"
+    },
+    {
+      "package": "PerfectWebSockets",
+      "reason": null,
+      "repositoryURL": "https://github.com/PerfectlySoft/Perfect-WebSockets.git",
+      "version": "2.0.2"
+    },
+    {
+      "package": "SSLService",
+      "reason": null,
+      "repositoryURL": "https://github.com/IBM-Swift/BlueSSLService.git",
+      "version": "0.12.54"
+    },
+    {
+      "package": "Signals",
+      "reason": null,
+      "repositoryURL": "https://github.com/IBM-Swift/BlueSignals.git",
+      "version": "0.9.49"
+    },
+    {
+      "package": "Socket",
+      "reason": null,
+      "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
+      "version": "0.12.67"
+    },
+    {
+      "package": "mariadbclient",
+      "reason": null,
+      "repositoryURL": "https://github.com/PerfectlySoft/Perfect-mariadbclient.git",
+      "version": "2.0.0"
+    }
+  ],
+  "version": 1
+}
