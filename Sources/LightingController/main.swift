@@ -1,7 +1,7 @@
 import PerfectLib
 import PerfectHTTP
 import PerfectHTTPServer
-import Foundation 
+import Foundation
 
 let lightingController = LightingController()
 lightingController.start()
@@ -20,10 +20,10 @@ server.documentRoot = "./webroot"
 server.serverPort = 8181
 
 do {
-    // Launch the HTTP server on port 8181
-    try server.start()    
+  // Launch the HTTP server on port 8181
+  try server.start()
 } catch PerfectError.networkError(let err, let msg) {
-    print("Network error thrown: \(err) \(msg)")
+  print("Network error thrown: \(err) \(msg)")
 }
 
 print("finished")
