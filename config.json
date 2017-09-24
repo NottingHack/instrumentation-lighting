@@ -1,13 +1,17 @@
 {
-    "serviceName": "lighting",
-    "mysql": {
-        "host": "127.0.0.1",
-        "user": "homestead",
-        "password": "secret",
-        "database": "lighting",
-    },
-    "mqtt": {
-        "host": "192.168.15.2",
-        "port": 1883,
-    }
+  "serviceName": "lighting",
+  "mysql": {
+    "host": "127.0.0.1",
+    "user": "homestead",
+    "password": "secret",
+    "database": "lighting"
+  },
+  "mqtt": {
+    "host": "192.168.15.2",
+    "port": 1883
+  },
+  "http": {
+    "docutmentRoot": "./webroot",
+    "port" : 8181
+  }
 }

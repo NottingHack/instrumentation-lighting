@@ -11,12 +11,6 @@ import PerfectLib
 import Configuration
 
 
-enum ChannelState: String {
-  case ON
-  case OFF
-  case TOGGLE
-}
-
 // MARK: -
 class LightingController {
   

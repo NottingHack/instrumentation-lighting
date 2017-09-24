@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum ChannelState: String {
+  case ON
+  case OFF
+  case TOGGLE
+}
+
 
 struct Building {
   var id: Int

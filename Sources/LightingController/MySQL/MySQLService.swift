@@ -10,11 +10,6 @@ import PerfectLib
 import MariaDB
 import Foundation
 
-//
-//protocol MySQLHandler: class {
-//  func findLight(forChannel channel: String, fromController controllerName: String) -> [Light]?
-//}
-
 //MARK: -
 class MySQLService {
   
