@@ -11,7 +11,8 @@
     "port": 1883
   },
   "http": {
-    "docutmentRoot": "./webroot",
+    "documentRoot": "./webroot",
+    "address": "127.0.0.1",
     "port" : 8181
   }
 }

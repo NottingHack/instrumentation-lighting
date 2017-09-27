@@ -18,38 +18,40 @@ struct LightingClient: Hashable {
   static func ==(lhs: LightingClient, rhs: LightingClient) -> Bool {
     return lhs.uid == rhs.uid
   }
-  
 }
 
-struct LightStateEvent {
+// MARK: - 
+struct LightStateEvent: Encodable {
   let EventType = "LightState"
   var room: String
   var light: Int
   var state: ChannelState
 }
 
-struct RoomDescriptionEvent {
+struct RoomDescriptionEvent: Encodable {
   let EventType = "RoomDescription"
   var room: String
   var lights: [Int]
 }
 
-struct PatternDescriptionEvent {
-  let EventType = "PatternDiscription"
-  var patternId: Int
-  var room: String
-  var light: [Int: ChannelState]
-}
-
-struct LightRequestEvent {
-  let EventType = "LightRequest"
+struct LightState: Encodable {
   var room: String
   var light: Int
   var state: ChannelState
-
 }
 
-struct PatternRequestEvent {
-  let EventType = "PatternRequest"
-  var patternId: Int
+// MARK: - 
+enum RequestEventType: String, Codable {
+  case ConenctRequest
+  case LightRequest
+  case PatternRequest
+}
+
+struct RequestEvent: Decodable {
+  let eventType: RequestEventType
+  var token: String?
+  var room: String?
+  var light: Int?
+  var state: ChannelState?
+  var patternId: Int?
 }

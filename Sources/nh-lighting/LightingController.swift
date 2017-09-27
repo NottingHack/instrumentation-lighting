@@ -8,7 +8,10 @@
 
 import Foundation
 import PerfectLib
+import PerfectHTTP
+import PerfectHTTPServer
 import Configuration
+import PerfectWebSockets
 
 
 // MARK: -
@@ -20,6 +23,8 @@ class LightingController {
   
   let mysql: MySQLService
   let mqtt: MqttService
+  let http = HTTPServer()
+  let wsClients: [LightingClient: WebSocket] = [:]
   
   init() {
     manager.load(file: "../../config.json").load(.environmentVariables).load(.commandLineArguments)
@@ -29,6 +34,20 @@ class LightingController {
     
     mqtt = MqttService(clientId: serviceName, host: manager["mqtt:host"] as! String, port: manager["mqtt:port"] as! Int32)
     mqtt.stateDelagate = self
+    
+    if let documentRoot = manager["http:documentRoot"] as! String? {
+      http.documentRoot = documentRoot
+    }
+    
+    if let address = manager["http:address"] as! String? {
+      http.serverAddress = address
+    }
+    
+    if let port = manager["http:port"] as? UInt16? ?? 8181 {
+      http.serverPort = port
+    }
+    
+    http.addRoutes(makeRoutes())
   }
   
   func start() {
@@ -45,6 +64,37 @@ class LightingController {
       Log.error(message: "Mqtt failed to connect with \(error)")
       // TODO: try again?
     }
+
+    
+    do {
+      // Launch the HTTP server on port 8181
+      try http.start()
+    } catch PerfectError.networkError(let err, let msg) {
+      Log.error(message: "Network error thrown: \(err) \(msg)")
+    } catch let error {
+      Log.error(message: "\(error)")
+    }
+  }
+  
+  func makeRoutes() -> Routes {
+    var routes = Routes()
+    
+    routes.add(method: .get, uri: "/lighting", handler: {
+      request, response in
+        WebSocketHandler(handlerProducer: {
+        (request: HTTPRequest, protocols: [String]) -> WebSocketSessionHandler? in
+          
+        // Check to make sure the client is requesting our "echo" service.
+        guard protocols.contains("lighting") else {
+          return nil
+        }
+        
+        // Return our service handler.
+        return LightingHandler()
+      }).handleRequest(request: request, response: response)
+    })
+    
+    return routes
   }
   
   func findLights(forChannel channel: Int, fromController controllerName: String) -> [Light]? {
@@ -59,7 +109,6 @@ class LightingController {
     
     return lights
   }
-  
 }
 
 // MARK: - ControllerStateDelagate

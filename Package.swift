@@ -1,13 +1,25 @@
+// swift-tools-version:4.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
 import PackageDescription
- 
+
 let package = Package(
-    name: "instrumentation-lighting",
+    name: "nh-lighting",
     dependencies: [
-        .Package(url: "https://github.com/PerfectlySoft/Perfect-HTTPServer.git", majorVersion: 2),
-        .Package(url: "https://github.com/PerfectlySoft/Perfect-WebSockets.git", majorVersion: 2),
-        .Package(url: "https://github.com/IBM-Swift/Aphid.git", majorVersion: 0),
-        .Package(url: "https://github.com/PerfectlySoft/Perfect-MariaDB.git", majorVersion: 2, minor: 0),
-        .Package(url: "https://github.com/IBM-Swift/BlueSignals.git", majorVersion: 0),
-        .Package(url: "https://github.com/IBM-Swift/Configuration.git", majorVersion: 1, minor: 0)
+        // Dependencies declare other packages that this package depends on.
+        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/PerfectlySoft/Perfect-HTTPServer.git", from: "2.0.0"),
+        .package(url: "https://github.com/PerfectlySoft/Perfect-WebSockets.git", from: "2.0.0"),
+        .package(url: "https://github.com/sandmman/Aphid.git", .branch("issue.32")),
+        .package(url: "https://github.com/PerfectlySoft/Perfect-MariaDB.git", from: "2.0.0"),
+        .package(url: "https://github.com/IBM-Swift/BlueSignals.git", from: "0.0.0"),
+        .package(url: "https://github.com/IBM-Swift/Configuration.git", from: "1.0.0")
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(
+            name: "nh-lighting",
+            dependencies: ["Aphid", "Signals", "PerfectHTTPServer", "PerfectWebSockets", "MariaDB", "Configuration"]),
     ]
 )
