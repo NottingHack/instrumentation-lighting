@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "Aphid",
-        "repositoryURL": "https://github.com/sandmman/Aphid.git",
+        "repositoryURL": "https://github.com/dpslwk/Aphid.git",
         "state": {
           "branch": "issue.32",
-          "revision": "32c2e0abbf03b3bfd76ab59db349d94e166b9bc9",
+          "revision": "5b846a76f4adfe800287a89dcfdb163b7292daf8",
           "version": null
         }
       },
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/IBM-Swift/Configuration.git",
         "state": {
           "branch": null,
-          "revision": "b2658afe8bf63a9529d3a08dac37879147fe5d79",
-          "version": "1.0.3"
+          "revision": "9973bcc64f41c81c9716bf1306079be61f29c998",
+          "version": "1.0.4"
         }
       },
       {
@@ -114,8 +114,8 @@
         "repositoryURL": "https://github.com/IBM-Swift/BlueSSLService.git",
         "state": {
           "branch": null,
-          "revision": "246f3b22581345f3bf1dedf526b3553f8739b851",
-          "version": "0.12.55"
+          "revision": "b4cac06a7860b7016ee968563812e9af3afe28e3",
+          "version": "0.12.57"
         }
       },
       {
@@ -123,8 +123,8 @@
         "repositoryURL": "https://github.com/IBM-Swift/BlueSignals.git",
         "state": {
           "branch": null,
-          "revision": "9a0b0bc422d0e3466cc41fe5cede0e9fac11df7c",
-          "version": "0.9.49"
+          "revision": "0fab5a9f166e96f17bb9646dc56cd22a6f3c3757",
+          "version": "0.9.50"
         }
       },
       {
@@ -132,8 +132,8 @@
         "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
         "state": {
           "branch": null,
-          "revision": "d42af4542b6d5a0114fc6a4aae479c454b52b64a",
-          "version": "0.12.68"
+          "revision": "d7d26f12e9614679423d4f7731de43597ae1e872",
+          "version": "0.12.70"
         }
       },
       {

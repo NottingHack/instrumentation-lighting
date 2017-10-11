@@ -23,7 +23,8 @@ class LightingController {
   let mysql: MySQLService
   let mqtt: MqttService
   let http = HTTPServer()
-  let wsClients: [LightingClient: WebSocket] = [:]
+  var wsClients: [LightingClient: WebSocket] = [:]
+  
   var currentStates = [CurrentLightState]()
   let processQueue: DispatchQueue
   
@@ -91,16 +92,16 @@ class LightingController {
     
     routes.add(method: .get, uri: "/lighting", handler: {
       request, response in
-        WebSocketHandler(handlerProducer: {
+      WebSocketHandler(handlerProducer: {
         (request: HTTPRequest, protocols: [String]) -> WebSocketSessionHandler? in
-          
+        
         // Check to make sure the client is requesting our "echo" service.
         guard protocols.contains("lighting") else {
           return nil
         }
         
         // Return our service handler.
-        return LightingHandler()
+        return LightingHandler(delegate: self)
       }).handleRequest(request: request, response: response)
     })
     
@@ -150,6 +151,29 @@ extension LightingController: ControllerStateDelagate {
         // post out new state to WS
         print(light, state)
       }
+    }
+  }
+}
+
+// MARK: - LightingHandlerDelage
+extension LightingController: LightingHandlerDelegate {
+  func addClientIfNeed(_ handler: WebSocketSessionHandler, request: HTTPRequest, socket: WebSocket, callback: @escaping (Bool) -> ()) {
+    print(handler, request, socket)
+  }
+  
+  func removeClient(_ socket: WebSocket, callback: @escaping (Bool) -> ()) {
+    
+  }
+  
+  func processRequestMessage(_ socket: WebSocket, event: RequestEvent) {
+    print(socket, event)
+    switch event.eventType {
+    case .ConnectRequest:
+      print("connection")
+    case .LightRequest:
+      print("light")
+    case .PatternRequest:
+      print("pattern")
     }
   }
 }

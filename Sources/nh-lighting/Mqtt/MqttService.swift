@@ -56,6 +56,13 @@ extension MqttService: MQTTDelegate {
   
   func didLoseConnection(error: Error?) {
     Log.info(message: "connection lost")
+    do {
+      try self.connect()
+      print("reconnecting")
+    } catch let error {
+      Log.error(message: "Mqtt failed to connect with \(error)")
+      // TODO: try again?
+    }
   }
   
   func didCompleteDelivery(token: String) {

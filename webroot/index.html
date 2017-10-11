@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <title>WebSocket Echo Test</title>
+<meta name="csrf-token" content="9p5cNFsViBtysW4RBtPwemH0ZuLcZUl031i4dP3r">
 <script language="javascript" type="text/javascript">
     var wsUri = "ws://localhost:8181/lighting";
     var output, input, send;
@@ -23,6 +24,11 @@
     function onOpen(evt) {
         writeToScreen("CONNECTED");
         // fire off join json to say who we are
+        var connectRequest = {
+            "eventType": "ConnectRequest",
+            "token": document.head.querySelector('meta[name="csrf-token"]').content
+        }
+        websocket.send(JSON.stringify(connectRequest))
     }
 
     function onClose(evt) {
