@@ -13,7 +13,6 @@ import PerfectHTTPServer
 import Configuration
 import PerfectWebSockets
 
-
 // MARK: -
 class LightingController {
   
@@ -25,6 +24,8 @@ class LightingController {
   let mqtt: MqttService
   let http = HTTPServer()
   let wsClients: [LightingClient: WebSocket] = [:]
+  var currentStates = [CurrentLightState]()
+  let processQueue: DispatchQueue
   
   init() {
     Log.info(message: "nh-lighting: Starting")
@@ -36,6 +37,8 @@ class LightingController {
     
     manager.load(file: configPath).load(.environmentVariables).load(.commandLineArguments)
     serviceName = manager["serviceName"] as! String
+    
+    processQueue = DispatchQueue(label: "\(serviceName).process")
     
     mysql = MySQLService(host: manager["mysql:host"] as! String, user: manager["mysql:user"] as! String, password: manager["mysql:password"] as! String, database: manager["mysql:database"] as! String)
     
@@ -71,7 +74,7 @@ class LightingController {
       Log.error(message: "Mqtt failed to connect with \(error)")
       // TODO: try again?
     }
-
+    
     
     do {
       // Launch the HTTP server on port 8181
@@ -109,33 +112,44 @@ class LightingController {
     if let controller = lighting.controllers.first(where: {$0.name == controllerName}),
       let channel = lighting.outputChannels.first(where: {$0.controllerId == controller.id && $0.channel == channel}) {
       lights = lighting.lights.filter {
-          $0.outputChannelId == channel.id
+        $0.outputChannelId == channel.id
       }
       
     }
     
     return lights
   }
+  
+  func updateLightState(lightId: Int, newState state: ChannelState) {
+    if let lightState = currentStates.first(where: {$0.id == lightId}) {
+      lightState.state = state
+    } else {
+      currentStates.append(CurrentLightState(id: lightId, state: state))
+    }
+  }
 }
 
 // MARK: - ControllerStateDelagate
 extension LightingController: ControllerStateDelagate {
   func didRecieve(_ state: ChannelState, forChannel channel: String, fromController controllerName: String) {
-    Log.info(message: "\(controllerName, channel, state)")
-    
-    if channel.contains("I") {
-      // deal with input channel
+    processQueue.async {
+      Log.info(message: "\(controllerName, channel, state)")
       
-      return
-    }
-    
-    guard let lights = findLights(forChannel: Int(channel)!, fromController: controllerName) else {
-      return
-    }
-    
-    for light in lights {
-      // post out new state to WS
-      print(light)
+      if channel.contains("I") {
+        // deal with input channel
+        
+        return
+      }
+      
+      guard let lights = self.findLights(forChannel: Int(channel)!, fromController: controllerName) else {
+        return
+      }
+      
+      for light in lights {
+        self.updateLightState(lightId: light.id, newState: state)
+        // post out new state to WS
+        print(light, state)
+      }
     }
   }
 }

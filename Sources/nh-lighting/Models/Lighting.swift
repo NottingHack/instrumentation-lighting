@@ -85,3 +85,20 @@ struct Lighting {
 
 var lighting = Lighting()
 
+class CurrentLightState {
+  let id: Int
+  var state: ChannelState
+  
+  init(id: Int, state: ChannelState) {
+    self.id = id
+    self.state = state
+  }
+}
+
+extension CurrentLightState: CustomStringConvertible {
+  var description: String {
+    get {
+      return "\nCurrentLightState(id: \(id) state: \(state))"
+    }
+  }
+}
