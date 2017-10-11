@@ -27,7 +27,14 @@ class LightingController {
   let wsClients: [LightingClient: WebSocket] = [:]
   
   init() {
-    manager.load(file: "../../config.json").load(.environmentVariables).load(.commandLineArguments)
+    Log.info(message: "nh-lighting: Starting")
+    #if Xcode
+      let configPath = "../../config.json"
+    #else
+      let configPath = "../../../config.json"
+    #endif
+    
+    manager.load(file: configPath).load(.environmentVariables).load(.commandLineArguments)
     serviceName = manager["serviceName"] as! String
     
     mysql = MySQLService(host: manager["mysql:host"] as! String, user: manager["mysql:user"] as! String, password: manager["mysql:password"] as! String, database: manager["mysql:database"] as! String)
