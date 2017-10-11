@@ -54,7 +54,7 @@ extension MqttService: MQTTDelegate {
     subscribe(topic: [statusRequestTopic, stateTopic], qoss: [.atMostOnce, .atMostOnce])
   }
   
-  func didLoseConnection() {
+  func didLoseConnection(error: Error?) {
     Log.info(message: "connection lost")
   }
   
@@ -73,12 +73,7 @@ extension MqttService: MQTTDelegate {
       }
     } else {
       Log.info(message: "\(topic, message)")
-      
     }
-  }
-  
-  func didLoseConnection(error: Error?) {
-    Log.info(message: "connection lost error")
   }
 }
 

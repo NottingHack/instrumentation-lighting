@@ -8,6 +8,6 @@
 
 import Foundation
 
-
 let lightingController = LightingController()
+
 lightingController.start()
