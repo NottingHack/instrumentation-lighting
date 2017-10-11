@@ -34,15 +34,22 @@ struct RoomDescriptionEvent: Encodable {
   var lights: [Int]
 }
 
-struct LightState: Encodable {
-  var room: String
-  var light: Int
-  var state: ChannelState
+
+struct PatternDescrption: Encodable {
+  var patternId: Int
+  
+  struct LightState: Encodable {
+    var room: String
+    var light: Int
+    var state: ChannelState
+  }
+  
+  var lights: [LightState]
 }
 
 // MARK: - 
 enum RequestEventType: String, Codable {
-  case ConenctRequest
+  case ConnectRequest
   case LightRequest
   case PatternRequest
 }
