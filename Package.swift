@@ -10,7 +10,7 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/PerfectlySoft/Perfect-HTTPServer.git", from: "2.0.0"),
         .package(url: "https://github.com/PerfectlySoft/Perfect-WebSockets.git", from: "2.0.0"),
-        .package(url: "https://github.com/dpslwk/Aphid.git", .branch("issue.32")),
+        .package(url: "https://github.com/PerfectlySoft/Perfect-Mosquitto", from: "1.0.0"),
         .package(url: "https://github.com/PerfectlySoft/Perfect-MariaDB.git", from: "2.0.0"),
         .package(url: "https://github.com/IBM-Swift/BlueSignals.git", from: "0.0.0"),
         .package(url: "https://github.com/IBM-Swift/Configuration.git", from: "1.0.0")
@@ -20,6 +20,6 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "nh-lighting",
-            dependencies: ["Aphid", "Signals", "PerfectHTTPServer", "PerfectWebSockets", "MariaDB", "Configuration"]),
+            dependencies: ["PerfectMosquitto", "Signals", "PerfectHTTPServer", "PerfectWebSockets", "MariaDB", "Configuration"]),
     ]
 )

@@ -224,37 +224,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Aphid::Aphid"
-               BuildableName = "Aphid.framework"
-               BlueprintName = "Aphid"
-               ReferencedContainer = "container:nh-lighting.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SSLService::SSLService"
-               BuildableName = "SSLService.framework"
-               BlueprintName = "SSLService"
-               ReferencedContainer = "container:nh-lighting.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Socket::Socket"
-               BuildableName = "Socket.framework"
-               BlueprintName = "Socket"
+               BlueprintIdentifier = "PerfectMosquitto::PerfectMosquitto"
+               BuildableName = "PerfectMosquitto.framework"
+               BlueprintName = "PerfectMosquitto"
                ReferencedContainer = "container:nh-lighting.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

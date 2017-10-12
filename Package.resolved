@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "Aphid",
-        "repositoryURL": "https://github.com/dpslwk/Aphid.git",
-        "state": {
-          "branch": "issue.32",
-          "revision": "5b846a76f4adfe800287a89dcfdb163b7292daf8",
-          "version": null
-        }
-      },
-      {
         "package": "COpenSSL",
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-COpenSSL.git",
         "state": {
@@ -83,6 +74,15 @@
         }
       },
       {
+        "package": "PerfectMosquitto",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Mosquitto",
+        "state": {
+          "branch": null,
+          "revision": "6c7612f743470e811cf49487073e889d2e22e96d",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "PerfectNet",
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Net.git",
         "state": {
@@ -110,15 +110,6 @@
         }
       },
       {
-        "package": "SSLService",
-        "repositoryURL": "https://github.com/IBM-Swift/BlueSSLService.git",
-        "state": {
-          "branch": null,
-          "revision": "b4cac06a7860b7016ee968563812e9af3afe28e3",
-          "version": "0.12.57"
-        }
-      },
-      {
         "package": "Signals",
         "repositoryURL": "https://github.com/IBM-Swift/BlueSignals.git",
         "state": {
@@ -128,12 +119,12 @@
         }
       },
       {
-        "package": "Socket",
-        "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
+        "package": "cmosquitto",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-libMosquitto.git",
         "state": {
           "branch": null,
-          "revision": "d7d26f12e9614679423d4f7731de43597ae1e872",
-          "version": "0.12.70"
+          "revision": "c5b40a1b53b66d61fde1382c1a616be867f8682e",
+          "version": "1.0.0"
         }
       },
       {
