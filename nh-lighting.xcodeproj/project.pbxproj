@@ -1269,7 +1269,7 @@
 		OBJ_137 /* a_enum.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_enum.c; sourceTree = "<group>"; };
 		OBJ_138 /* a_gentm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_gentm.c; sourceTree = "<group>"; };
 		OBJ_139 /* a_i2d_fp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_i2d_fp.c; sourceTree = "<group>"; };
-		OBJ_14 /* MqttService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttService.swift; sourceTree = "<group>"; };
+		OBJ_14 /* MqttService.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MqttService.swift; sourceTree = "<group>"; };
 		OBJ_140 /* a_int.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_int.c; sourceTree = "<group>"; };
 		OBJ_141 /* a_mbstr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_mbstr.c; sourceTree = "<group>"; };
 		OBJ_142 /* a_object.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_object.c; sourceTree = "<group>"; };
@@ -3122,7 +3122,7 @@
 			path = ".build/checkouts/Perfect-WebSockets.git--5144200636556942371/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -3132,7 +3132,6 @@
 				OBJ_22 /* Dependencies */,
 				OBJ_834 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_51 /* PerfectHTTPServer 2.3.4 */ = {
@@ -3888,7 +3887,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_834 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
