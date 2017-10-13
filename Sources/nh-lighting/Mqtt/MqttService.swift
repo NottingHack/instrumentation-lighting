@@ -35,11 +35,11 @@ class MqttService {
     serviceName = clientId
     self.host = host
     self.port = port
+    
     mosquitto = Mosquitto(id: "nh-lightting")
-    
-    setupCallbacks()
-    
-    
+    mosquitto.OnConnect = OnConnect
+    mosquitto.OnDisconnect = OnDisconnect
+    mosquitto.OnMessage = OnMessage
   }
   
   deinit {
@@ -81,82 +81,52 @@ class MqttService {
     return (matches[0], matches[1])
   }
   
-  func setupCallbacks() {
-    mosquitto.OnConnect = { (status) in
-      if status == .SUCCESS {
-        Log.info(message:"Mqtt Connected")
-        do {
-          var msg = Mosquitto.Message()
-          msg.topic = self.statusReqsponseTopic
-          msg.string = "Restart: \(self.serviceName)"
-          try self.mosquitto.publish(message: msg)
-          
-          try self.mosquitto.subscribe(topic: self.statusRequestTopic)
-          try self.mosquitto.subscribe(topic: self.stateTopic)
-        } catch {
-          Log.info(message:"Mqtt subscription failed \(error)")
-        }
-      }else{
-        Log.info(message:"Mqtt connection failed: \(status)")
-      }//end if
-    }
-    
-    mosquitto.OnDisconnect = { (status) in
-      Log.info(message: "Mqtt disconnect: \(status)")
-    }
-    
-    mosquitto.OnMessage = { (msg) in
-      if msg.topic == self.statusRequestTopic {
+  //MARK: - Callbacks
+  func OnConnect(_ status: Mosquitto.ConnectionStatus) -> Void {
+    if status == .SUCCESS {
+      Log.info(message:"Mqtt Connected")
+      do {
         var msg = Mosquitto.Message()
-        msg.topic = self.statusReqsponseTopic
-        msg.string = "Running: \(self.serviceName)"
-        do {
-          try self.mosquitto.publish(message: msg)
-        } catch {
-          
-        }
+        msg.topic = statusReqsponseTopic
+        msg.string = "Restart: \(serviceName)"
+        try mosquitto.publish(message: msg)
         
-      } else if let (controller, channel) = self.decodeState(topic: msg.topic) {
-        if let message = msg.string,
-          let state = ChannelState(rawValue: message) {
-          guard let stateDelagate = self.stateDelagate else { Log.error(message: "Did you forget to set the stateDelagate"); return }
-          
-          stateDelagate.didRecieve(state, forChannel: channel, fromController: controller)
-        }
-      } else {
-        Log.info(message: "\(msg.topic, msg.string)")
+        try mosquitto.subscribe(topic: statusRequestTopic)
+        try mosquitto.subscribe(topic: stateTopic)
+      } catch {
+        Log.info(message:"Mqtt subscription failed \(error)")
       }
-    }
+    }else{
+      Log.info(message:"Mqtt connection failed: \(status)")
+    }//end if
   }
   
-//  func didLoseConnection(error: Error?) {
-//    Log.info(message: "connection lost")
-//    do {
-//      try mosquitto.connect()
-//      print("reconnecting")
-//    } catch let error {
-//      Log.error(message: "Mqtt failed to connect with \(error)")
-//      // TODO: try again?
-//    }
-//  }
-//
-//  func didCompleteDelivery(token: String) {
-//    //        Log.info(message: "didComplete: \(token)")
-//  }
-//
-//  func didReceiveMessage(topic: String, message: String) {
-//    if topic == statusRequestTopic {
-//      publish(topic: statusReqsponseTopic, withMessage: "Running: \(serviceName)", qos: .atMostOnce)
-//    } else if let (controller, channel) = decodeState(topic: topic) {
-//      if let state = ChannelState(rawValue: message) {
-//        guard let stateDelagate = self.stateDelagate else { Log.error(message: "Did you forget to set the stateDelagate"); return }
-//
-//        stateDelagate.didRecieve(state, forChannel: channel, fromController: controller)
-//      }
-//    } else {
-//      Log.info(message: "\(topic, message)")
-//    }
-//  }
+  func OnDisconnect(_ status: Mosquitto.ConnectionStatus) -> Void {
+    Log.info(message: "Mqtt disconnect: \(status)")
+  }
+  
+  func OnMessage(_ msg: Mosquitto.Message) -> Void {
+    if msg.topic == statusRequestTopic {
+      var msg = Mosquitto.Message()
+      msg.topic = statusReqsponseTopic
+      msg.string = "Running: \(serviceName)"
+      do {
+        try mosquitto.publish(message: msg)
+      } catch {
+        
+      }
+      
+    } else if let (controller, channel) = decodeState(topic: msg.topic) {
+      if let message = msg.string,
+        let state = ChannelState(rawValue: message) {
+        guard let stateDelagate = stateDelagate else { Log.error(message: "Did you forget to set the stateDelagate"); return }
+        
+        stateDelagate.didRecieve(state, forChannel: channel, fromController: controller)
+      }
+    } else {
+      Log.info(message: "\(msg.topic, msg.string)")
+    }
+  }
 }
 
 // MARK: - String extension
