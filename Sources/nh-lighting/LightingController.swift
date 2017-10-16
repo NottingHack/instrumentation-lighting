@@ -142,7 +142,7 @@ class LightingController {
   
   func clientConnected(fromSocket socket: WebSocket) {
     describeRooms(toSocket: socket)
-    sendCurrentStates(toSocket: socket)
+    describeCurrentStates(toSocket: socket)
   }
   
   func describeRooms(toSocket socket: WebSocket) {
@@ -167,7 +167,7 @@ class LightingController {
     }
   }
   
-  func sendCurrentStates(toSocket socket: WebSocket) {
+  func describeCurrentStates(toSocket socket: WebSocket) {
     var lightStateEvents: [LightStateEvent] = []
     for lightState in currentStates {
       if let light = lighting.lights.first(where: {$0.id == lightState.id}),
@@ -253,8 +253,7 @@ extension LightingController: LightingHandlerDelegate {
       Log.info(message: "processRequestMessage: \(event)")
       switch event.eventType {
       case .ConnectRequest:
-        print("processRequest: connection")
-        // send out current states
+        // send out description and current states
         self.clientConnected(fromSocket: socket)
       case .LightRequest:
         // need to send out via mqtt
@@ -264,7 +263,7 @@ extension LightingController: LightingHandlerDelegate {
             return
         }
         
-        self.mqtt.request(state, forOutputChannel: outputChannel, onController: controller)
+        self.mqtt.request(newState: state, forOutputChannel: outputChannel, onController: controller)
       case .PatternRequest:
         print("processRequest: pattern")
         // need to look up and send out bunch of mqtt stuff

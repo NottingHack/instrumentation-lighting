@@ -82,7 +82,7 @@ class MqttService {
     return (matches[0], matches[1])
   }
   
-  func request(_ state: ChannelState, forOutputChannel channel: OutputChannel, onController controller: Controller) {
+  func request(newState state: ChannelState, forOutputChannel channel: OutputChannel, onController controller: Controller) {
     Log.info(message: "Mqtt requesting state: \(state) forOutputChannel: \(channel) onController: \(controller)")
     var topic = setTopic.replacingOccurrences(of: "{controller}", with: controller.name)
     topic = topic.replacingOccurrences(of: "{channel}", with: String(format: "%02d", channel.channel))
