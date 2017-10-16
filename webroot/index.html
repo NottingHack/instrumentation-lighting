@@ -74,6 +74,16 @@
       websocket.send(JSON.stringify(lightRequestEvent));
     }
 
+    function requestPattern(ele) {
+      var patternRequestEvent = {
+        "eventType": "PatternRequest",
+        "patternId": parseInt(ele.id, 10)
+      }
+      console.log(JSON.stringify(patternRequestEvent));
+      websocket.send(JSON.stringify(patternRequestEvent));
+      
+    }
+  
     function processEvent(event) {
       switch (event.eventType) {
         case "LightState":
@@ -99,7 +109,7 @@
     }
 
     function processPatternDescription(description) {
-
+      $("#patterns").append('<button id="'+description.patternId+'" onclick="requestPattern(this)">'+description.name+'</button>')
     }
 
     window.addEventListener("load", init, false);
@@ -108,6 +118,7 @@
 
 <body>
   <h2>nh-lighting test page</h2>
+  <div id="patterns"></div>
   <div id="rooms">
   </div>
   <div id="output"></div>

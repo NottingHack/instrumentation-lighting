@@ -37,6 +37,7 @@ struct RoomDescriptionEvent: Encodable {
 struct PatternDescrptionEvent: Encodable {
   let eventType = "PatternDescrption"
   var patternId: Int
+  var name: String
   
   struct LightState: Encodable {
     var room: String

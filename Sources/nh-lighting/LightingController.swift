@@ -143,6 +143,7 @@ class LightingController {
   func clientConnected(fromSocket socket: WebSocket) {
     describeRooms(toSocket: socket)
     describeCurrentStates(toSocket: socket)
+    describePatterns(toSocket: socket)
   }
   
   func describeRooms(toSocket socket: WebSocket) {
@@ -184,6 +185,48 @@ class LightingController {
       }
     } catch {
       
+    }
+  }
+  
+  func describePatterns(toSocket socket: WebSocket) {
+    var patternDescriptionEvents: [PatternDescrptionEvent] = []
+    
+    for pattern in lighting.patterns {
+      var lightStates: [PatternDescrptionEvent.LightState] = []
+      let lightPatterns = lighting.lightPatterns.filter({$0.patternId == pattern.id})
+      for lightPattern in lightPatterns {
+        if let light = lighting.lights.first(where: {$0.id == lightPattern.lightId}),
+           let room = lighting.rooms.first(where: {$0.id == light.roomId}) {
+          let lightState = PatternDescrptionEvent.LightState(room: room.name, light: light.id, state: lightPattern.state)
+          lightStates.append(lightState)
+        }
+      }
+      
+      let roomDescription = PatternDescrptionEvent(patternId: pattern.id, name: pattern.name, lights: lightStates)
+      patternDescriptionEvents.append(roomDescription)
+    }
+    
+    do {
+      let jsonEvent = try JSONEncoder().encode(patternDescriptionEvents)
+      socket.sendStringMessage(string: String(data: jsonEvent, encoding: .utf8)!, final: true) {
+        
+      }
+    } catch {
+      
+    }
+  }
+  
+  func processPattern(request: RequestEvent, forSocket socket: WebSocket) {
+    if let patternId = request.patternId,
+       let pattern = lighting.patterns.first(where: {$0.id == patternId}){
+      let lightPatterns = lighting.lightPatterns.filter({$0.patternId == pattern.id})
+      for lightPattern in lightPatterns {
+        if let light = lighting.lights.first(where: {$0.id == lightPattern.lightId}),
+           let outputChannel = lighting.outputChannels.first(where: {$0.id == light.outputChannelId}),
+           let controller = lighting.controllers.first(where: {$0.id == outputChannel.controllerId}) {
+          self.mqtt.request(newState: lightPattern.state, forOutputChannel: outputChannel, onController: controller)
+        }
+      }
     }
   }
 }
@@ -267,6 +310,7 @@ extension LightingController: LightingHandlerDelegate {
       case .PatternRequest:
         print("processRequest: pattern")
         // need to look up and send out bunch of mqtt stuff
+        self.processPattern(request: event, forSocket: socket)
       }
     }
   }
