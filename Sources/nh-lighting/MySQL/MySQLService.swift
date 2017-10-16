@@ -198,11 +198,11 @@ class MySQLService {
   
   func loadLightPatterns() -> Bool {
     let select = "SELECT * FROM light_lighting_pattern"
-
+    
     return load(select) { (row) in
-      guard let lightId = Int(row[0]!),
-            let patternId = Int(row[2]!),
-            let state = ChannelState(rawValue: row[3]!) else {
+      guard let lightId = Int(row[1]!),
+            let patternId = Int(row[0]!),
+            let state = ChannelState(rawValue: row[2]!) else {
         return
       }
       
