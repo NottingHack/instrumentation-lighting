@@ -39,22 +39,22 @@ class MySQLService {
     }
 
     guard loadBuildings(),
-      loadFloors(),
-      loadRooms(),
-      loadLights(),
-      loadControllers(),
-      loadOutputChannels(),
-      loadInputChannels(),
-      loadPatterns(),
-      loadLightPatterns() else {
-        Log.critical(message: "Falied to load Model")
-        return false
+          loadFloors(),
+          loadRooms(),
+          loadLights(),
+          loadControllers(),
+          loadOutputChannels(),
+          loadInputChannels(),
+          loadPatterns(),
+          loadLightPatterns() else {
+      Log.critical(message: "Falied to load Model")
+      return false
     }
     Log.info(message: "MySQL loaded model")
     return true
   }
   
-  func load(_ select: String, callback: (MySQL.Results.Element) -> ()) ->Bool {
+  func load(_ select: String, callback: (MySQL.Results.Element) -> ()) -> Bool {
     guard client.query(statement: select) else {
       Log.error(message: client.errorMessage())
       return false
@@ -74,8 +74,8 @@ class MySQLService {
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
-        let name = row[1] else {
-          return
+            let name = row[1] else {
+        return
       }
       
       lighting.buildings.append(Building(id: id, name: name))
@@ -87,10 +87,10 @@ class MySQLService {
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
-        let name = row[1],
-        let level = Int(row[2]!),
-        let buildingId = Int(row[3]!) else {
-          return
+            let name = row[1],
+            let level = Int(row[2]!),
+            let buildingId = Int(row[3]!) else {
+        return
       }
       
       lighting.floors.append(Floor(id: id, name: name, level: level, buildingId: buildingId))
@@ -102,9 +102,9 @@ class MySQLService {
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
-        let name = row[1],
-        let floorId = Int(row[2]!) else {
-          return
+            let name = row[1],
+            let floorId = Int(row[2]!) else {
+        return
       }
       
       lighting.rooms.append(Room(id: id, name: name, floorId: floorId))
@@ -116,10 +116,10 @@ class MySQLService {
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
-        let name = row[1],
-        let roomId = Int(row[2]!),
-        let outputChannelId = Int(row[3]!) else {
-          return
+            let name = row[1],
+            let roomId = Int(row[2]!),
+            let outputChannelId = Int(row[3]!) else {
+        return
       }
       
       lighting.lights.append(Light(id: id, name: name, roomId: roomId, outputChannelId: outputChannelId))
@@ -131,9 +131,9 @@ class MySQLService {
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
-        let name = row[1],
-        let roomId = Int(row[2]!) else {
-          return
+            let name = row[1],
+            let roomId = Int(row[2]!) else {
+        return
       }
       
       lighting.controllers.append(Controller(id: id, name: name, roomId: roomId))
@@ -145,9 +145,9 @@ class MySQLService {
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
-        let channel = Int(row[1]!),
-        let controllerId = Int(row[2]!) else {
-          return
+            let channel = Int(row[1]!),
+            let controllerId = Int(row[2]!) else {
+        return
       }
       
       lighting.outputChannels.append(OutputChannel(id: id, channel: channel, controllerId: controllerId))
@@ -159,9 +159,9 @@ class MySQLService {
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
-        let channel = Int(row[1]!),
-        let controllerId = Int(row[2]!) else {
-          return
+            let channel = Int(row[1]!),
+            let controllerId = Int(row[2]!) else {
+        return
       }
       
       var patternId: Int?
@@ -178,8 +178,8 @@ class MySQLService {
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
-        let name = row[1]else {
-          return
+            let name = row[1] else {
+        return
       }
       
       var nextPatternId: Int?
@@ -201,9 +201,9 @@ class MySQLService {
 
     return load(select) { (row) in
       guard let lightId = Int(row[0]!),
-        let patternId = Int(row[2]!),
-        let state = ChannelState(rawValue: row[3]!) else {
-          return
+            let patternId = Int(row[2]!),
+            let state = ChannelState(rawValue: row[3]!) else {
+        return
       }
       
       lighting.lightPatterns.append(LigthPattern(lightId: lightId, patternId: patternId, state: state))

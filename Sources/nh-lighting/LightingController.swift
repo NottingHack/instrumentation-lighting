@@ -24,6 +24,7 @@ class LightingController {
   let mqtt: MqttService
   let http = HTTPServer()
   var wsClients: [LightingClient: WebSocket] = [:]
+  var sockets: [WebSocket] = []
   
   var currentStates = [CurrentLightState]()
   let processQueue: DispatchQueue
@@ -111,7 +112,7 @@ class LightingController {
   func findLights(forChannel channel: Int, fromController controllerName: String) -> [Light]? {
     var lights: [Light]?
     if let controller = lighting.controllers.first(where: {$0.name == controllerName}),
-      let channel = lighting.outputChannels.first(where: {$0.controllerId == controller.id && $0.channel == channel}) {
+       let channel = lighting.outputChannels.first(where: {$0.controllerId == controller.id && $0.channel == channel}) {
       lights = lighting.lights.filter {
         $0.outputChannelId == channel.id
       }
@@ -128,13 +129,70 @@ class LightingController {
       currentStates.append(CurrentLightState(id: lightId, state: state))
     }
   }
+  
+  func findControllerAndOutputChannel(forEvent event: RequestEvent) -> (controller: Controller, outputChannel: OutputChannel)? {
+    if let lightId = event.light,
+       let light = lighting.lights.first(where: {$0.id == lightId}),
+       let outputChannel = lighting.outputChannels.first(where: {$0.id == light.outputChannelId}),
+       let controller = lighting.controllers.first(where: {$0.id == outputChannel.controllerId}) {
+      return (controller, outputChannel)
+    }
+    return nil
+  }
+  
+  func clientConnected(fromSocket socket: WebSocket) {
+    describeRooms(toSocket: socket)
+    sendCurrentStates(toSocket: socket)
+  }
+  
+  func describeRooms(toSocket socket: WebSocket) {
+    var roomDescriptionEvents: [RoomDescriptionEvent] = []
+    for room in lighting.rooms {
+      let lights = lighting.lights.filter({ $0.roomId == room.id})
+      var lightIds: [Int] = []
+      for light in lights {
+        lightIds.append(light.id)
+      }
+      let roomDescription = RoomDescriptionEvent(room: room.name, lights:lightIds)
+      roomDescriptionEvents.append(roomDescription)
+    }
+    
+    do {
+      let jsonEvent = try JSONEncoder().encode(roomDescriptionEvents)
+      socket.sendStringMessage(string: String(data: jsonEvent, encoding: .utf8)!, final: true) {
+        
+      }
+    } catch {
+      
+    }
+  }
+  
+  func sendCurrentStates(toSocket socket: WebSocket) {
+    var lightStateEvents: [LightStateEvent] = []
+    for lightState in currentStates {
+      if let light = lighting.lights.first(where: {$0.id == lightState.id}),
+         let room = lighting.rooms.first(where: {$0.id == light.roomId}) {
+        let lightStateEvent = LightStateEvent(room: room.name, light: light.id, state: lightState.state)
+        lightStateEvents.append(lightStateEvent)
+      }
+    }
+    
+    do {
+      let jsonEvent = try JSONEncoder().encode(lightStateEvents)
+      socket.sendStringMessage(string: String(data: jsonEvent, encoding: .utf8)!, final: true) {
+        
+      }
+    } catch {
+      
+    }
+  }
 }
 
 // MARK: - ControllerStateDelagate
 extension LightingController: ControllerStateDelagate {
-  func didRecieve(_ state: ChannelState, forChannel channel: String, fromController controllerName: String) {
+  func didReceive(_ state: ChannelState, forChannel channel: String, fromController controllerName: String) {
     processQueue.async {
-      Log.info(message: "\(controllerName, channel, state)")
+      Log.info(message: "didReceive message: \(controllerName, channel, state)")
       
       if channel.contains("I") {
         // deal with input channel
@@ -149,7 +207,24 @@ extension LightingController: ControllerStateDelagate {
       for light in lights {
         self.updateLightState(lightId: light.id, newState: state)
         // post out new state to WS
-        print(light, state)
+
+        guard let room = lighting.rooms.first(where: {$0.id == light.roomId}) else {
+            Log.error(message: "didReveive: Can not find room for light: \(light)")
+            continue
+        }
+        
+        let lightStateEvent = LightStateEvent(room: room.name, light: light.id, state: state)
+        
+        do {
+          let jsonEvent = try JSONEncoder().encode(lightStateEvent)
+          for socket in self.sockets {
+            socket.sendStringMessage(string: String(data: jsonEvent, encoding: .utf8)!, final: true) {
+                
+            }
+          }
+        } catch {
+            
+        }
       }
     }
   }
@@ -158,22 +233,42 @@ extension LightingController: ControllerStateDelagate {
 // MARK: - LightingHandlerDelage
 extension LightingController: LightingHandlerDelegate {
   func addClientIfNeed(_ handler: WebSocketSessionHandler, request: HTTPRequest, socket: WebSocket, callback: @escaping (Bool) -> ()) {
-    print(handler, request, socket)
+    Log.info(message: "addClient: \(handler, request, socket)")
+    if (!sockets.contains(socket)) {
+      sockets.append(socket)
+    }
+    callback(true)
   }
   
   func removeClient(_ socket: WebSocket, callback: @escaping (Bool) -> ()) {
-    
+    Log.info(message: "removeClient: \(socket)")
+    if let socketIndex = sockets.index(of: socket) {
+      sockets.remove(at: socketIndex)
+    }
+    callback(true)
   }
   
   func processRequestMessage(_ socket: WebSocket, event: RequestEvent) {
-    print(socket, event)
-    switch event.eventType {
-    case .ConnectRequest:
-      print("connection")
-    case .LightRequest:
-      print("light")
-    case .PatternRequest:
-      print("pattern")
+    processQueue.async {
+      Log.info(message: "processRequestMessage: \(event)")
+      switch event.eventType {
+      case .ConnectRequest:
+        print("processRequest: connection")
+        // send out current states
+        self.clientConnected(fromSocket: socket)
+      case .LightRequest:
+        // need to send out via mqtt
+        guard let state = event.state,
+              let (controller, outputChannel) = self.findControllerAndOutputChannel(forEvent: event) else {
+            Log.warning(message: "Incomplete LightRequest: \(event)")
+            return
+        }
+        
+        self.mqtt.request(state, forOutputChannel: outputChannel, onController: controller)
+      case .PatternRequest:
+        print("processRequest: pattern")
+        // need to look up and send out bunch of mqtt stuff
+      }
     }
   }
 }

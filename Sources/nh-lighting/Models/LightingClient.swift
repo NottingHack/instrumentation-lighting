@@ -22,20 +22,20 @@ struct LightingClient: Hashable {
 
 // MARK: - 
 struct LightStateEvent: Encodable {
-  let EventType = "LightState"
+  let eventType = "LightState"
   var room: String
   var light: Int
   var state: ChannelState
 }
 
 struct RoomDescriptionEvent: Encodable {
-  let EventType = "RoomDescription"
+  let eventType = "RoomDescription"
   var room: String
   var lights: [Int]
 }
 
-
-struct PatternDescrption: Encodable {
+struct PatternDescrptionEvent: Encodable {
+  let eventType = "PatternDescrption"
   var patternId: Int
   
   struct LightState: Encodable {

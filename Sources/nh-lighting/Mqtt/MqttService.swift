@@ -13,7 +13,7 @@ import PerfectMosquitto
 
 
 protocol ControllerStateDelagate: class {
-  func didRecieve(_ state: ChannelState, forChannel channel: String, fromController controllerName: String) -> Void
+  func didReceive(_ state: ChannelState, forChannel channel: String, fromController controllerName: String) -> Void
 }
 
 // MARK: -
@@ -25,6 +25,7 @@ class MqttService {
   let statusRequestTopic = "nh/status/req"
   let statusReqsponseTopic = "nh/status/res"
   let stateTopic = "nh/li/+/+/state"
+  let setTopic = "nh/li/{controller}/{channel}/set"
   let stateTopicPattern = "nh/li/(\\S+)/(I\\d|\\d{2})/state"
   let mosquitto: Mosquitto
   public var stateDelagate: ControllerStateDelagate?
@@ -66,7 +67,7 @@ class MqttService {
     do{
       try mosquitto.start()
     } catch {
-      Log.error(message: "Mqtt failed to connect with \(Mosquitto.Explain(error as! Mosquitto.Exception))")
+      Log.error(message: "Mqtt failed to start with \(Mosquitto.Explain(error as! Mosquitto.Exception))")
       throw error
     }
   }
@@ -79,6 +80,22 @@ class MqttService {
     }
     
     return (matches[0], matches[1])
+  }
+  
+  func request(_ state: ChannelState, forOutputChannel channel: OutputChannel, onController controller: Controller) {
+    Log.info(message: "Mqtt requesting state: \(state) forOutputChannel: \(channel) onController: \(controller)")
+    var topic = setTopic.replacingOccurrences(of: "{controller}", with: controller.name)
+    topic = topic.replacingOccurrences(of: "{channel}", with: String(format: "%02d", channel.channel))
+    
+    var msg = Mosquitto.Message()
+    msg.topic = topic
+    msg.string = state.rawValue
+    
+    do {
+      try mosquitto.publish(message: msg)
+    } catch {
+      Log.error(message: "Mqtt request publish failed: \(msg)")
+    }
   }
   
   //MARK: - Callbacks
@@ -118,10 +135,10 @@ class MqttService {
       
     } else if let (controller, channel) = decodeState(topic: msg.topic) {
       if let message = msg.string,
-        let state = ChannelState(rawValue: message) {
+         let state = ChannelState(rawValue: message) {
         guard let stateDelagate = stateDelagate else { Log.error(message: "Did you forget to set the stateDelagate"); return }
         
-        stateDelagate.didRecieve(state, forChannel: channel, fromController: controller)
+        stateDelagate.didReceive(state, forChannel: channel, fromController: controller)
       }
     } else {
       Log.info(message: "\(msg.topic, msg.string)")

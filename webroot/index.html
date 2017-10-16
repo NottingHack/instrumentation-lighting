@@ -1,67 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>WebSocket Echo Test</title>
-<meta name="csrf-token" content="9p5cNFsViBtysW4RBtPwemH0ZuLcZUl031i4dP3r">
-<script language="javascript" type="text/javascript">
+  <title>WebSocket Echo Test</title>
+  <meta name="csrf-token" content="9p5cNFsViBtysW4RBtPwemH0ZuLcZUl031i4dP3r">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script language="javascript" type="text/javascript">
     var wsUri = "ws://localhost:8181/lighting";
     var output, input, send;
 
     function init() {
-        output = document.getElementById("output");
-        input = document.getElementById("input");
-        testWebSocket();
+      output = document.getElementById("output");
+      input = document.getElementById("input");
+      testWebSocket();
     }
 
     function testWebSocket() {
-        websocket = new WebSocket(wsUri, "lighting");
-        websocket.onopen = function(evt) { onOpen(evt) };
-        websocket.onclose = function(evt) { onClose(evt) };
-        websocket.onmessage = function(evt) { onMessage(evt) };
-        websocket.onerror = function(evt) { onError(evt) };
+      websocket = new WebSocket(wsUri, "lighting");
+      websocket.onopen = function(evt) { onOpen(evt) };
+      websocket.onclose = function(evt) { onClose(evt) };
+      websocket.onmessage = function(evt) { onMessage(evt) };
+      websocket.onerror = function(evt) { onError(evt) };
     }
 
     function onOpen(evt) {
-        writeToScreen("CONNECTED");
-        // fire off join json to say who we are
-        var connectRequest = {
-            "eventType": "ConnectRequest",
-            "token": document.head.querySelector('meta[name="csrf-token"]').content
-        }
-        websocket.send(JSON.stringify(connectRequest))
+      writeToScreen("CONNECTED");
+      // fire off join json to say who we are
+      var connectRequest = {
+        "eventType": "ConnectRequest",
+        "token": document.head.querySelector('meta[name="csrf-token"]').content
+      }
+      websocket.send(JSON.stringify(connectRequest))
     }
 
     function onClose(evt) {
-        writeToScreen("DISCONNECTED");
-        // reconnect if still on screen? or show reconenct button
+      writeToScreen("DISCONNECTED");
+      // reconnect if still on screen? or show reconenct button
     }
 
     function onMessage(evt) {
-        writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'<\/span>');
+      writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'<\/span>');
+      var events = JSON.parse(evt.data);
+      console.log(events);
+      if (Array.isArray(events)) {
+        events.forEach(function(event) {
+          processEvent(event);
+        });
+      } else {
+        processEvent(events)
+      }
     }
 
     function onError(evt) {
-        writeToScreen('<span style="color: red;">ERROR:<\/span> ' + evt.data);
+      writeToScreen('<span style="color: red;">ERROR:<\/span> ' + evt.data);
     }
 
     function doSend() {
-        writeToScreen('<span style="color: red;">SENDING:<\/span> ' + input.value);
-        websocket.send(input.value);
+      writeToScreen('<span style="color: red;">SENDING:<\/span> ' + input.value);
+      websocket.send(input.value);
     }
 
     function writeToScreen(message) {
-        output.innerHTML = message
+      output.innerHTML = message;
+    }
+
+    function requestNewState(ele) {
+      var lightRequestEvent = {
+        "eventType": "LightRequest",
+        "room": ele.id.split('_')[0].replace(/-/g, ' '),
+        "light": parseInt(ele.id.split('_')[1], 10),
+        "state": "TOGGLE"
+      }
+      console.log(JSON.stringify(lightRequestEvent));
+      websocket.send(JSON.stringify(lightRequestEvent));
+    }
+
+    function processEvent(event) {
+      switch (event.eventType) {
+        case "LightState":
+        $( '#'+event.room.replace(/ /g, '-')+'_'+event.light).html(event.state);
+        break;
+        case "RoomDescription":
+        processRoomDescription(event);
+        break;
+        case "PatternDescrption":
+        processPatternDescription(event);
+        break;
+      }
+    }
+
+    function processRoomDescription(description) {
+      var roomId = description.room.replace(/ /g, '-')
+      if (!$('#'+roomId).length) {
+        $("#rooms").append('<div id="'+roomId+'"><div>'+description.room+'</div><table><tr></tr></table></div>')
+        description.lights.forEach(function (light) {
+          $('#'+roomId+' table tr').append('<td><button id="'+roomId+'_'+light.toString()+'" onclick="requestNewState(this)">0</button></td>')
+        });
+      }
+    }
+
+    function processPatternDescription(description) {
+
     }
 
     window.addEventListener("load", init, false);
-</script>
+  </script>
 </head>
 
 <body>
-<h2>WebSocket Test</h2>
-<p>Click the send button to transmit the text to the WebSocket server. The server will echo back the text.</p>
-<textarea id="input">Sample Text</textarea>
-<button onclick="doSend()">Send</button>
-<div id="output"></div>
+  <h2>nh-lighting test page</h2>
+  <div id="rooms">
+  </div>
+  <div id="output"></div>
 </body>
 </html>
