@@ -167,7 +167,7 @@ extension String {
     
     for i in 1...lastRangeIndex {
       let capturedGroupIndex = match.range(at: i)
-      let matchedString = (self as NSString).substring(with: capturedGroupIndex)
+      let matchedString = String(self[Range(capturedGroupIndex, in: self)!])
       results.append(matchedString)
     }
     
