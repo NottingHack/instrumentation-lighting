@@ -109,7 +109,9 @@
     }
 
     function processPatternDescription(description) {
-      $("#patterns").append('<button id="'+description.patternId+'" onclick="requestPattern(this)">'+description.name+'</button>')
+      if (!$('#patterns button#'+description.patternId).length) {
+        $("#patterns").append('<button id="'+description.patternId+'" onclick="requestPattern(this)">'+description.name+'</button>')
+      }
     }
 
     window.addEventListener("load", init, false);
