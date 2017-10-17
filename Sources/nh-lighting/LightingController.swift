@@ -230,6 +230,22 @@ class LightingController {
       }
     }
   }
+    
+  func processPattern(forChannel channel: Int, fromController controller: String, withState state: ChannelState) {
+    if (state == .ON) {
+      if let inputChannel = lighting.inputChannels.first(where: {$0.channel == channel}),
+         let pattern = lighting.patterns.first(where: {$0.id == inputChannel.patternId}) {
+        let lightPatterns = lighting.lightPatterns.filter({$0.patternId == pattern.id})
+        for lightPattern in lightPatterns {
+          if let light = lighting.lights.first(where: {$0.id == lightPattern.lightId}),
+             let outputChannel = lighting.outputChannels.first(where: {$0.id == light.outputChannelId}),
+             let controller = lighting.controllers.first(where: {$0.id == outputChannel.controllerId}) {
+            self.mqtt.request(newState: lightPattern.state, forOutputChannel: outputChannel, onController: controller)
+          }
+        }
+      }
+    }
+  }
 }
 
 // MARK: - ControllerStateDelagate
@@ -240,7 +256,9 @@ extension LightingController: ControllerStateDelagate {
       
       if channel.contains("I") {
         // deal with input channel
-        
+        var inputChannel = channel
+        inputChannel.removeFirst()
+        self.processPattern(forChannel: Int(inputChannel)!, fromController: controllerName, withState: state)
         return
       }
       
