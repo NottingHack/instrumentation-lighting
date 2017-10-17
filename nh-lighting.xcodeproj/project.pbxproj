@@ -847,378 +847,378 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C99C47671F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91902FA1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Configuration::Configuration";
 			remoteInfo = Configuration;
 		};
-		C99C47681F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91902FB1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "LoggerAPI::LoggerAPI";
 			remoteInfo = LoggerAPI;
 		};
-		C99C47691F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91902FC1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "LoggerAPI::LoggerAPI";
 			remoteInfo = LoggerAPI;
 		};
-		C99C476A1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91902FD1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "MariaDB::MariaDB";
 			remoteInfo = MariaDB;
 		};
-		C99C476B1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91902FE1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectWebSockets::PerfectWebSockets";
 			remoteInfo = PerfectWebSockets;
 		};
-		C99C476C1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91902FF1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectHTTP::PerfectHTTP";
 			remoteInfo = PerfectHTTP;
 		};
-		C99C476D1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903001F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectNet::PerfectNet";
 			remoteInfo = PerfectNet;
 		};
-		C99C476E1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903011F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectCrypto::PerfectCrypto";
 			remoteInfo = PerfectCrypto;
 		};
-		C99C476F1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903021F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "COpenSSL::COpenSSL";
 			remoteInfo = COpenSSL;
 		};
-		C99C47701F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903031F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectThread::PerfectThread";
 			remoteInfo = PerfectThread;
 		};
-		C99C47711F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903041F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectLib::PerfectLib";
 			remoteInfo = PerfectLib;
 		};
-		C99C47721F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903051F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "COpenSSL::COpenSSL";
 			remoteInfo = COpenSSL;
 		};
-		C99C47731F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903061F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectThread::PerfectThread";
 			remoteInfo = PerfectThread;
 		};
-		C99C47741F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903071F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectLib::PerfectLib";
 			remoteInfo = PerfectLib;
 		};
-		C99C47751F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903081F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectCrypto::PerfectCrypto";
 			remoteInfo = PerfectCrypto;
 		};
-		C99C47761F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903091F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "COpenSSL::COpenSSL";
 			remoteInfo = COpenSSL;
 		};
-		C99C47771F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919030A1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectThread::PerfectThread";
 			remoteInfo = PerfectThread;
 		};
-		C99C47781F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919030B1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectLib::PerfectLib";
 			remoteInfo = PerfectLib;
 		};
-		C99C47791F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919030C1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectNet::PerfectNet";
 			remoteInfo = PerfectNet;
 		};
-		C99C477A1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919030D1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectCrypto::PerfectCrypto";
 			remoteInfo = PerfectCrypto;
 		};
-		C99C477B1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919030E1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "COpenSSL::COpenSSL";
 			remoteInfo = COpenSSL;
 		};
-		C99C477C1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919030F1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectThread::PerfectThread";
 			remoteInfo = PerfectThread;
 		};
-		C99C477D1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903101F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectLib::PerfectLib";
 			remoteInfo = PerfectLib;
 		};
-		C99C477E1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903111F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectHTTPServer::PerfectHTTPServer";
 			remoteInfo = PerfectHTTPServer;
 		};
-		C99C477F1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903121F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectHTTPServer::PerfectCZlib";
 			remoteInfo = PerfectCZlib;
 		};
-		C99C47801F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903131F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectHTTP::PerfectHTTP";
 			remoteInfo = PerfectHTTP;
 		};
-		C99C47811F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903141F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectNet::PerfectNet";
 			remoteInfo = PerfectNet;
 		};
-		C99C47821F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903151F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectCrypto::PerfectCrypto";
 			remoteInfo = PerfectCrypto;
 		};
-		C99C47831F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903161F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "COpenSSL::COpenSSL";
 			remoteInfo = COpenSSL;
 		};
-		C99C47841F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903171F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectThread::PerfectThread";
 			remoteInfo = PerfectThread;
 		};
-		C99C47851F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903181F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectLib::PerfectLib";
 			remoteInfo = PerfectLib;
 		};
-		C99C47861F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903191F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectHTTPServer::PerfectCHTTPParser";
 			remoteInfo = PerfectCHTTPParser;
 		};
-		C99C47871F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919031A1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectHTTP::PerfectHTTP";
 			remoteInfo = PerfectHTTP;
 		};
-		C99C47881F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919031B1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectNet::PerfectNet";
 			remoteInfo = PerfectNet;
 		};
-		C99C47891F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919031C1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectCrypto::PerfectCrypto";
 			remoteInfo = PerfectCrypto;
 		};
-		C99C478A1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919031D1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "COpenSSL::COpenSSL";
 			remoteInfo = COpenSSL;
 		};
-		C99C478B1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919031E1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectThread::PerfectThread";
 			remoteInfo = PerfectThread;
 		};
-		C99C478C1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919031F1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectLib::PerfectLib";
 			remoteInfo = PerfectLib;
 		};
-		C99C478D1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903201F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectHTTP::PerfectHTTP";
 			remoteInfo = PerfectHTTP;
 		};
-		C99C478E1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903211F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectNet::PerfectNet";
 			remoteInfo = PerfectNet;
 		};
-		C99C478F1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903221F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectCrypto::PerfectCrypto";
 			remoteInfo = PerfectCrypto;
 		};
-		C99C47901F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903231F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "COpenSSL::COpenSSL";
 			remoteInfo = COpenSSL;
 		};
-		C99C47911F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903241F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectThread::PerfectThread";
 			remoteInfo = PerfectThread;
 		};
-		C99C47921F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903251F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectLib::PerfectLib";
 			remoteInfo = PerfectLib;
 		};
-		C99C47931F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903261F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectHTTPServer::PerfectCHTTPParser";
 			remoteInfo = PerfectCHTTPParser;
 		};
-		C99C47941F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903271F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectHTTPServer::PerfectCZlib";
 			remoteInfo = PerfectCZlib;
 		};
-		C99C47951F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903281F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectHTTP::PerfectHTTP";
 			remoteInfo = PerfectHTTP;
 		};
-		C99C47961F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C91903291F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectNet::PerfectNet";
 			remoteInfo = PerfectNet;
 		};
-		C99C47971F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919032A1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectCrypto::PerfectCrypto";
 			remoteInfo = PerfectCrypto;
 		};
-		C99C47981F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919032B1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "COpenSSL::COpenSSL";
 			remoteInfo = COpenSSL;
 		};
-		C99C47991F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919032C1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectThread::PerfectThread";
 			remoteInfo = PerfectThread;
 		};
-		C99C479A1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919032D1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "PerfectLib::PerfectLib";
 			remoteInfo = PerfectLib;
 		};
-		C99C479B1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919032E1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Signals::Signals";
 			remoteInfo = Signals;
 		};
-		C99C479C1F8F57E5009A9F30 /* PBXContainerItemProxy */ = {
+		C919032F1F962D7700BAC523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -1269,7 +1269,7 @@
 		OBJ_137 /* a_enum.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_enum.c; sourceTree = "<group>"; };
 		OBJ_138 /* a_gentm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_gentm.c; sourceTree = "<group>"; };
 		OBJ_139 /* a_i2d_fp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_i2d_fp.c; sourceTree = "<group>"; };
-		OBJ_14 /* MqttService.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MqttService.swift; sourceTree = "<group>"; };
+		OBJ_14 /* MqttService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttService.swift; sourceTree = "<group>"; };
 		OBJ_140 /* a_int.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_int.c; sourceTree = "<group>"; };
 		OBJ_141 /* a_mbstr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_mbstr.c; sourceTree = "<group>"; };
 		OBJ_142 /* a_object.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = a_object.c; sourceTree = "<group>"; };
@@ -1290,7 +1290,7 @@
 		OBJ_157 /* aes_ctr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = aes_ctr.c; sourceTree = "<group>"; };
 		OBJ_158 /* aes_ecb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = aes_ecb.c; sourceTree = "<group>"; };
 		OBJ_159 /* aes_ige.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = aes_ige.c; sourceTree = "<group>"; };
-		OBJ_16 /* MySQLService.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MySQLService.swift; sourceTree = "<group>"; };
+		OBJ_16 /* MySQLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySQLService.swift; sourceTree = "<group>"; };
 		OBJ_160 /* aes_misc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = aes_misc.c; sourceTree = "<group>"; };
 		OBJ_161 /* aes_ofb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = aes_ofb.c; sourceTree = "<group>"; };
 		OBJ_162 /* aes_wrap.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = aes_wrap.c; sourceTree = "<group>"; };
@@ -1311,7 +1311,7 @@
 		OBJ_177 /* bf_enc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bf_enc.c; sourceTree = "<group>"; };
 		OBJ_178 /* bf_lbuf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bf_lbuf.c; sourceTree = "<group>"; };
 		OBJ_179 /* bf_nbio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bf_nbio.c; sourceTree = "<group>"; };
-		OBJ_18 /* WebSocketHandler.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = WebSocketHandler.swift; sourceTree = "<group>"; };
+		OBJ_18 /* WebSocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketHandler.swift; sourceTree = "<group>"; };
 		OBJ_180 /* bf_null.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bf_null.c; sourceTree = "<group>"; };
 		OBJ_181 /* bf_ofb64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bf_ofb64.c; sourceTree = "<group>"; };
 		OBJ_182 /* bf_skey.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bf_skey.c; sourceTree = "<group>"; };
@@ -2013,7 +2013,7 @@
 		OBJ_87 /* HTTP2FrameReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP2FrameReader.swift; sourceTree = "<group>"; };
 		OBJ_88 /* HTTP2FrameWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP2FrameWriter.swift; sourceTree = "<group>"; };
 		OBJ_89 /* HTTP2PrefaceValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP2PrefaceValidator.swift; sourceTree = "<group>"; };
-		OBJ_9 /* LightingController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = LightingController.swift; sourceTree = "<group>"; };
+		OBJ_9 /* LightingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightingController.swift; sourceTree = "<group>"; };
 		OBJ_90 /* HTTP2Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP2Request.swift; sourceTree = "<group>"; };
 		OBJ_91 /* HTTP2Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP2Response.swift; sourceTree = "<group>"; };
 		OBJ_92 /* HTTP2Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP2Session.swift; sourceTree = "<group>"; };
@@ -2217,7 +2217,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		OBJ_100 /* PerfectHTTP 2.2.4 */ = {
+		OBJ_100 /* PerfectHTTP 3.0.0 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_101 /* Package.swift */,
@@ -2231,11 +2231,11 @@
 				OBJ_109 /* Routing.swift */,
 				OBJ_110 /* StaticFileHandler.swift */,
 			);
-			name = "PerfectHTTP 2.2.4";
+			name = "PerfectHTTP 3.0.0";
 			path = ".build/checkouts/Perfect-HTTP.git--6392294032632002019/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_111 /* PerfectNet 2.1.18 */ = {
+		OBJ_111 /* PerfectNet 3.0.0 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_112 /* Package.swift */,
@@ -2247,11 +2247,11 @@
 				OBJ_118 /* NetTCPSSL.swift */,
 				OBJ_119 /* NetUDP.swift */,
 			);
-			name = "PerfectNet 2.1.18";
+			name = "PerfectNet 3.0.0";
 			path = ".build/checkouts/Perfect-Net.git-3268755499654502659/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_120 /* PerfectCrypto 1.1.1 */ = {
+		OBJ_120 /* PerfectCrypto 3.0.1 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_121 /* Package.swift */,
@@ -2263,17 +2263,17 @@
 				OBJ_127 /* OpenSSLInternal.swift */,
 				OBJ_128 /* PerfectCrypto.swift */,
 			);
-			name = "PerfectCrypto 1.1.1";
+			name = "PerfectCrypto 3.0.1";
 			path = ".build/checkouts/Perfect-Crypto.git--5196635702121641122/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_129 /* COpenSSL 2.0.6 */ = {
+		OBJ_129 /* COpenSSL 3.0.0 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_130 /* COpenSSL */,
 				OBJ_815 /* Package.swift */,
 			);
-			name = "COpenSSL 2.0.6";
+			name = "COpenSSL 3.0.0";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_13 /* Mqtt */ = {
@@ -3003,16 +3003,16 @@
 				OBJ_23 /* Configuration 1.0.4 */,
 				OBJ_33 /* LoggerAPI 1.7.1 */,
 				OBJ_37 /* Signals 0.9.50 */,
-				OBJ_41 /* MariaDB 2.0.3 */,
+				OBJ_41 /* MariaDB 3.0.1 */,
 				OBJ_45 /* PerfectMosquitto 1.0.0 */,
-				OBJ_48 /* PerfectWebSockets 2.0.2 */,
-				OBJ_51 /* PerfectHTTPServer 2.3.4 */,
-				OBJ_100 /* PerfectHTTP 2.2.4 */,
-				OBJ_111 /* PerfectNet 2.1.18 */,
-				OBJ_120 /* PerfectCrypto 1.1.1 */,
-				OBJ_129 /* COpenSSL 2.0.6 */,
-				OBJ_816 /* PerfectThread 2.0.12 */,
-				OBJ_821 /* PerfectLib 2.0.11 */,
+				OBJ_48 /* PerfectWebSockets 3.0.0 */,
+				OBJ_51 /* PerfectHTTPServer 3.0.0 */,
+				OBJ_100 /* PerfectHTTP 3.0.0 */,
+				OBJ_111 /* PerfectNet 3.0.0 */,
+				OBJ_120 /* PerfectCrypto 3.0.1 */,
+				OBJ_129 /* COpenSSL 3.0.0 */,
+				OBJ_816 /* PerfectThread 3.0.1 */,
+				OBJ_821 /* PerfectLib 3.0.0 */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -3084,13 +3084,13 @@
 			path = ".build/checkouts/BlueSignals.git--7903764214117911549/Sources/Signals";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_41 /* MariaDB 2.0.3 */ = {
+		OBJ_41 /* MariaDB 3.0.1 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_42 /* MariaDB */,
 				OBJ_44 /* Package.swift */,
 			);
-			name = "MariaDB 2.0.3";
+			name = "MariaDB 3.0.1";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_42 /* MariaDB */ = {
@@ -3112,17 +3112,17 @@
 			path = ".build/checkouts/Perfect-Mosquitto--83938748312896191/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_48 /* PerfectWebSockets 2.0.2 */ = {
+		OBJ_48 /* PerfectWebSockets 3.0.0 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_49 /* Package.swift */,
 				OBJ_50 /* WebSocketHandler.swift */,
 			);
-			name = "PerfectWebSockets 2.0.2";
+			name = "PerfectWebSockets 3.0.0";
 			path = ".build/checkouts/Perfect-WebSockets.git--5144200636556942371/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 = {
+		OBJ_5 /*  */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -3132,9 +3132,10 @@
 				OBJ_22 /* Dependencies */,
 				OBJ_834 /* Products */,
 			);
+			name = "";
 			sourceTree = "<group>";
 		};
-		OBJ_51 /* PerfectHTTPServer 2.3.4 */ = {
+		OBJ_51 /* PerfectHTTPServer 3.0.0 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_52 /* PerfectCZlib */,
@@ -3142,7 +3143,7 @@
 				OBJ_78 /* PerfectHTTPServer */,
 				OBJ_99 /* Package.swift */,
 			);
-			name = "PerfectHTTPServer 2.3.4";
+			name = "PerfectHTTPServer 3.0.0";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_52 /* PerfectCZlib */ = {
@@ -3254,7 +3255,7 @@
 			path = include;
 			sourceTree = "<group>";
 		};
-		OBJ_816 /* PerfectThread 2.0.12 */ = {
+		OBJ_816 /* PerfectThread 3.0.1 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_817 /* Package.swift */,
@@ -3262,7 +3263,7 @@
 				OBJ_819 /* ThreadQueue.swift */,
 				OBJ_820 /* Threading.swift */,
 			);
-			name = "PerfectThread 2.0.12";
+			name = "PerfectThread 3.0.1";
 			path = ".build/checkouts/Perfect-Thread.git-6541237758607105655/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
@@ -3284,13 +3285,13 @@
 			path = HTTP2;
 			sourceTree = "<group>";
 		};
-		OBJ_821 /* PerfectLib 2.0.11 */ = {
+		OBJ_821 /* PerfectLib 3.0.0 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_822 /* PerfectLib */,
 				OBJ_833 /* Package.swift */,
 			);
-			name = "PerfectLib 2.0.11";
+			name = "PerfectLib 3.0.0";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_822 /* PerfectLib */ = {
@@ -3850,35 +3851,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
-				TargetAttributes = {
-					"MariaDB::MariaDB" = {
-						LastSwiftMigration = 0900;
-					};
-					"PerfectCrypto::PerfectCrypto" = {
-						LastSwiftMigration = 0900;
-					};
-					"PerfectHTTP::PerfectHTTP" = {
-						LastSwiftMigration = 0900;
-					};
-					"PerfectHTTPServer::PerfectHTTPServer" = {
-						LastSwiftMigration = 0900;
-					};
-					"PerfectLib::PerfectLib" = {
-						LastSwiftMigration = 0900;
-					};
-					"PerfectMosquitto::PerfectMosquitto" = {
-						LastSwiftMigration = 0900;
-					};
-					"PerfectNet::PerfectNet" = {
-						LastSwiftMigration = 0900;
-					};
-					"PerfectThread::PerfectThread" = {
-						LastSwiftMigration = 0900;
-					};
-					"PerfectWebSockets::PerfectWebSockets" = {
-						LastSwiftMigration = 0900;
-					};
-				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "nh-lighting" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3887,7 +3859,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5;
+			mainGroup = OBJ_5 /*  */;
 			productRefGroup = OBJ_834 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -4926,272 +4898,272 @@
 		OBJ_1005 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "LoggerAPI::LoggerAPI" /* LoggerAPI */;
-			targetProxy = C99C47681F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91902FB1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1030 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectHTTP::PerfectHTTP" /* PerfectHTTP */;
-			targetProxy = C99C476C1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91902FF1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1031 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectNet::PerfectNet" /* PerfectNet */;
-			targetProxy = C99C47791F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919030C1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1032 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectCrypto::PerfectCrypto" /* PerfectCrypto */;
-			targetProxy = C99C477A1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919030D1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1033 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "COpenSSL::COpenSSL" /* COpenSSL */;
-			targetProxy = C99C477B1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919030E1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1034 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectThread::PerfectThread" /* PerfectThread */;
-			targetProxy = C99C477C1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919030F1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1035 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectLib::PerfectLib" /* PerfectLib */;
-			targetProxy = C99C477D1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903101F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1067 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectHTTPServer::PerfectCZlib" /* PerfectCZlib */;
-			targetProxy = C99C477F1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903121F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1068 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectHTTPServer::PerfectCHTTPParser" /* PerfectCHTTPParser */;
-			targetProxy = C99C47861F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903191F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1069 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectHTTP::PerfectHTTP" /* PerfectHTTP */;
-			targetProxy = C99C478D1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903201F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1070 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectNet::PerfectNet" /* PerfectNet */;
-			targetProxy = C99C478E1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903211F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1071 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectCrypto::PerfectCrypto" /* PerfectCrypto */;
-			targetProxy = C99C478F1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903221F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1072 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "COpenSSL::COpenSSL" /* COpenSSL */;
-			targetProxy = C99C47901F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903231F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1073 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectThread::PerfectThread" /* PerfectThread */;
-			targetProxy = C99C47911F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903241F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1074 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectLib::PerfectLib" /* PerfectLib */;
-			targetProxy = C99C47921F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903251F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1087 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectHTTP::PerfectHTTP" /* PerfectHTTP */;
-			targetProxy = C99C47871F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919031A1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1088 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectNet::PerfectNet" /* PerfectNet */;
-			targetProxy = C99C47881F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919031B1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1089 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectCrypto::PerfectCrypto" /* PerfectCrypto */;
-			targetProxy = C99C47891F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919031C1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1090 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "COpenSSL::COpenSSL" /* COpenSSL */;
-			targetProxy = C99C478A1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919031D1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1091 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectThread::PerfectThread" /* PerfectThread */;
-			targetProxy = C99C478B1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919031E1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1092 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectLib::PerfectLib" /* PerfectLib */;
-			targetProxy = C99C478C1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919031F1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1119 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectHTTP::PerfectHTTP" /* PerfectHTTP */;
-			targetProxy = C99C47801F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903131F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1120 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectNet::PerfectNet" /* PerfectNet */;
-			targetProxy = C99C47811F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903141F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1121 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectCrypto::PerfectCrypto" /* PerfectCrypto */;
-			targetProxy = C99C47821F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903151F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1122 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "COpenSSL::COpenSSL" /* COpenSSL */;
-			targetProxy = C99C47831F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903161F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1123 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectThread::PerfectThread" /* PerfectThread */;
-			targetProxy = C99C47841F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903171F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1124 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectLib::PerfectLib" /* PerfectLib */;
-			targetProxy = C99C47851F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903181F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1144 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectNet::PerfectNet" /* PerfectNet */;
-			targetProxy = C99C476D1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903001F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1145 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectCrypto::PerfectCrypto" /* PerfectCrypto */;
-			targetProxy = C99C47751F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903081F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1146 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "COpenSSL::COpenSSL" /* COpenSSL */;
-			targetProxy = C99C47761F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903091F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1147 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectThread::PerfectThread" /* PerfectThread */;
-			targetProxy = C99C47771F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919030A1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1148 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectLib::PerfectLib" /* PerfectLib */;
-			targetProxy = C99C47781F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919030B1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1165 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectCrypto::PerfectCrypto" /* PerfectCrypto */;
-			targetProxy = C99C476E1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903011F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1166 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "COpenSSL::COpenSSL" /* COpenSSL */;
-			targetProxy = C99C47721F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903051F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1167 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectThread::PerfectThread" /* PerfectThread */;
-			targetProxy = C99C47731F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903061F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1168 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectLib::PerfectLib" /* PerfectLib */;
-			targetProxy = C99C47741F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903071F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1184 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "COpenSSL::COpenSSL" /* COpenSSL */;
-			targetProxy = C99C476F1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903021F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1185 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectThread::PerfectThread" /* PerfectThread */;
-			targetProxy = C99C47701F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903031F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_1186 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectLib::PerfectLib" /* PerfectLib */;
-			targetProxy = C99C47711F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903041F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_963 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Configuration::Configuration" /* Configuration */;
-			targetProxy = C99C47671F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91902FA1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_965 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "LoggerAPI::LoggerAPI" /* LoggerAPI */;
-			targetProxy = C99C47691F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91902FC1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_967 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "MariaDB::MariaDB" /* MariaDB */;
-			targetProxy = C99C476A1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91902FD1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_969 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectWebSockets::PerfectWebSockets" /* PerfectWebSockets */;
-			targetProxy = C99C476B1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91902FE1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_971 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectHTTPServer::PerfectHTTPServer" /* PerfectHTTPServer */;
-			targetProxy = C99C477E1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903111F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_973 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectHTTPServer::PerfectCHTTPParser" /* PerfectCHTTPParser */;
-			targetProxy = C99C47931F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903261F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_975 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectHTTPServer::PerfectCZlib" /* PerfectCZlib */;
-			targetProxy = C99C47941F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903271F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_977 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectHTTP::PerfectHTTP" /* PerfectHTTP */;
-			targetProxy = C99C47951F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903281F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_979 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectNet::PerfectNet" /* PerfectNet */;
-			targetProxy = C99C47961F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C91903291F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_981 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectCrypto::PerfectCrypto" /* PerfectCrypto */;
-			targetProxy = C99C47971F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919032A1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_983 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "COpenSSL::COpenSSL" /* COpenSSL */;
-			targetProxy = C99C47981F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919032B1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_985 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectThread::PerfectThread" /* PerfectThread */;
-			targetProxy = C99C47991F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919032C1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_987 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectLib::PerfectLib" /* PerfectLib */;
-			targetProxy = C99C479A1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919032D1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_989 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Signals::Signals" /* Signals */;
-			targetProxy = C99C479B1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919032E1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 		OBJ_991 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "PerfectMosquitto::PerfectMosquitto" /* PerfectMosquitto */;
-			targetProxy = C99C479C1F8F57E5009A9F30 /* PBXContainerItemProxy */;
+			targetProxy = C919032F1F962D7700BAC523 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
