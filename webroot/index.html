@@ -4,6 +4,7 @@
   <title>WebSocket Echo Test</title>
   <meta name="csrf-token" content="9p5cNFsViBtysW4RBtPwemH0ZuLcZUl031i4dP3r">
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="/reconnecting-websocket.min.js"></script>
   <script language="javascript" type="text/javascript">
     var wsUri = "ws://localhost:8181/lighting";
     var output, input, send;
@@ -15,7 +16,7 @@
     }
 
     function testWebSocket() {
-      websocket = new WebSocket(wsUri, "lighting");
+      websocket = new ReconnectingWebSocket(wsUri, "lighting");
       websocket.onopen = function(evt) { onOpen(evt) };
       websocket.onclose = function(evt) { onClose(evt) };
       websocket.onmessage = function(evt) { onMessage(evt) };
@@ -86,13 +87,18 @@
   
     function processEvent(event) {
       switch (event.eventType) {
-        case "LightState":
+      case "LightState":
         $( '#'+event.room.replace(/ /g, '-')+'_'+event.light).html(event.state);
+        if (event.state == "ON") {
+          $( '#'+event.room.replace(/ /g, '-')+'_'+event.light).css("background-color", "green")
+        } else {
+          $( '#'+event.room.replace(/ /g, '-')+'_'+event.light).css("background-color", "red")
+        }
         break;
-        case "RoomDescription":
+      case "RoomDescription":
         processRoomDescription(event);
         break;
-        case "PatternDescrption":
+      case "PatternDescrption":
         processPatternDescription(event);
         break;
       }
@@ -103,7 +109,7 @@
       if (!$('#'+roomId).length) {
         $("#rooms").append('<div id="'+roomId+'"><div>'+description.room+'</div><table><tr></tr></table></div>')
         description.lights.forEach(function (light) {
-          $('#'+roomId+' table tr').append('<td><button id="'+roomId+'_'+light.toString()+'" onclick="requestNewState(this)">0</button></td>')
+          $('#'+roomId+' table tr').append('<td><button id="'+roomId+'_'+light.toString()+'" onclick="requestNewState(this)" style="width:50px">0</button></td>')
         });
       }
     }
@@ -120,9 +126,10 @@
 
 <body>
   <h2>nh-lighting test page</h2>
-  <div id="patterns"></div>
-  <div id="rooms">
+  <div id="patterns"><h3>Patterns</h3></div>
+  <div id="rooms"><h3>Rooms</h3>
   </div>
+  <h3>Debug</h3>
   <div id="output"></div>
 </body>
 </html>
