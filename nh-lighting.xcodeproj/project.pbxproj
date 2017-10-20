@@ -3004,7 +3004,7 @@
 				OBJ_33 /* LoggerAPI 1.7.1 */,
 				OBJ_37 /* Signals 0.9.50 */,
 				OBJ_41 /* MariaDB 3.0.1 */,
-				OBJ_45 /* PerfectMosquitto 1.0.0 */,
+				OBJ_45 /* PerfectMosquitto 3.0.0 */,
 				OBJ_48 /* PerfectWebSockets 3.0.0 */,
 				OBJ_51 /* PerfectHTTPServer 3.0.0 */,
 				OBJ_100 /* PerfectHTTP 3.0.0 */,
@@ -3102,13 +3102,13 @@
 			path = ".build/checkouts/Perfect-MariaDB.git--8659573388932602546/Sources/MariaDB";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_45 /* PerfectMosquitto 1.0.0 */ = {
+		OBJ_45 /* PerfectMosquitto 3.0.0 */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_46 /* Package.swift */,
 				OBJ_47 /* PerfectMosquitto.swift */,
 			);
-			name = "PerfectMosquitto 1.0.0";
+			name = "PerfectMosquitto 3.0.0";
 			path = ".build/checkouts/Perfect-Mosquitto--83938748312896191/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
