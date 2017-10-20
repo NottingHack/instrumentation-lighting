@@ -45,7 +45,7 @@ class LightingController {
     
     mysql = MySQLService(host: manager["mysql:host"] as! String, user: manager["mysql:user"] as! String, password: manager["mysql:password"] as! String, database: manager["mysql:database"] as! String)
     
-    mqtt = MqttService(clientId: serviceName, host: manager["mqtt:host"] as! String, port: manager["mqtt:port"] as! Int32)
+    mqtt = MqttService(clientId: serviceName, host: manager["mqtt:host"] as! String, port: Int32(manager["mqtt:port"] as! Int))
     mqtt.stateDelagate = self
     
     if let documentRoot = manager["http:documentRoot"] as! String? {
@@ -64,7 +64,6 @@ class LightingController {
   }
   
   func start() {
-    
     guard mysql.loadModels() else {
       Log.error(message: "Failed to load models")
       // TODO: try agian or quit
