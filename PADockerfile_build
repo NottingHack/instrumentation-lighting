@@ -1,0 +1,13 @@
+FROM perfectlysoft/perfectassistant:4.0
+# Perfect-LinuxBridge.git--7800615936562837535/PADockerfile
+RUN apt-get -y update && apt-get install -y uuid-dev
+
+# Perfect-libMosquitto.git-912656607874575574/PADockerfile
+RUN apt-get -y update && apt-get install -y libmosquitto-dev
+
+# Perfect-mariadbclient-Linux.git-6683129825093298715/PADockerfile
+RUN apt-get -y update && apt-get install -y pkg-config libmariadb2 libmariadb-client-lgpl-dev && printf "Name: mariadb\nDescription: MariaDB Connector/C\nVersion: 5.5.0\nLibs: -L/usr/lib/mariadb -lmariadb  -ldl -lm -lpthread\nCflags: -I/usr/include/mariadb" > /usr/lib/pkgconfig/mariadb.pc
+
+# Perfect-COpenSSL-Linux.git--2196163065081815086/PADockerfile
+RUN apt-get -y update && apt-get install -y libssl-dev
+RUN rm -rf /var/lib/apt/lists/*

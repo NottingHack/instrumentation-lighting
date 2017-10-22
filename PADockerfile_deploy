@@ -1,0 +1,5 @@
+FROM perfectassistant/nh-lighting:latest
+COPY .build_lin/release/nh-lighting /perfect-deployed/nh-lighting/
+COPY webroot /perfect-deployed/nh-lighting/webroot
+RUN rm -rf /var/lib/apt/lists/*
+CMD cd /perfect-deployed/nh-lighting/ && ./nh-lighting
