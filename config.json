@@ -7,12 +7,12 @@
     "database": "lighting"
   },
   "mqtt": {
-    "host": "192.168.15.2",
+    "host": "localhost",
     "port": 1883
   },
   "http": {
     "documentRoot": "./webroot",
-    "address": "127.0.0.1",
+    "address": "0.0.0.0",
     "port" : 8181
   }
 }
