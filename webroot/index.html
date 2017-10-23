@@ -6,7 +6,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="/reconnecting-websocket.min.js"></script>
   <script language="javascript" type="text/javascript">
-    var wsUri = "ws://localhost:8181/lighting";
+    var wsUri = "ws://"+location.hostname+":8181/lighting";
     var output, input, send;
 
     function init() {
@@ -82,7 +82,6 @@
       }
       console.log(JSON.stringify(patternRequestEvent));
       websocket.send(JSON.stringify(patternRequestEvent));
-      
     }
   
     function processEvent(event) {
