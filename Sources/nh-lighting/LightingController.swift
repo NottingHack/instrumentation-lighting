@@ -32,11 +32,15 @@ class LightingController {
   
   init() {
     Log.info(message: "nh-lighting: Starting")
-    #if Xcode
-      let configPath = "../../config.json"
-    #else
-      let configPath = "../../../config.json"
-    #endif
+    var configPath = "./config.json"
+
+    if _isDebugAssertConfiguration() {
+      #if Xcode
+        configPath = "../../config.json"
+      #else
+        configPath = "../../../config.json" // location for use with SwitPM
+      #endif
+    }
     
     manager.load(file: configPath).load(.environmentVariables).load(.commandLineArguments)
     serviceName = manager["serviceName"] as! String
@@ -279,6 +283,7 @@ extension LightingController: ControllerStateDelagate {
         do {
           let jsonEvent = try JSONEncoder().encode(lightStateEvent)
           for socket in self.sockets {
+            // TODO: dispatch to an concurrent async queue?
             socket.sendStringMessage(string: String(data: jsonEvent, encoding: .utf8)!, final: true) {
                 
             }

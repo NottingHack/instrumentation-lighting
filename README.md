@@ -28,7 +28,7 @@ sudo docker network create -d macvlan  \
 
 Build the intermediary docker image with our dependencies, only needs doing if `PADockerfile_build` has changed 
 ```bash
-sudo docker build -f PADockerfile_build -t perfectassistant/nh-lighting:latest
+sudo docker build -f PADockerfile_build -t perfectassistant/nh-lighting .
 ```
 
 ### Compiling
@@ -41,7 +41,7 @@ sudo docker run \
     --volume=/home/dpslwk/github/instrumentation-lighting/.build_lin:/perfectbuild/.build \
     --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.pins:/perfectbuild/Package.pins \
     --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.resolved:/perfectbuild/Package.resolved \
-    --workdir=/perfectbuild --rm -t -p 8080:8080 perfectassistant/nh-lighting:latest swift build -v
+    --workdir=/perfectbuild --rm -t -p 8080:8080 perfectassistant/nh-lighting swift build
 ```
 
 ### Running in place 
@@ -55,7 +55,7 @@ sudo docker create \
     --volume=/home/dpslwk/github/instrumentation-lighting/.build_lin:/perfectbuild/.build \
     --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.pins:/perfectbuild/Package.pins \
     --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.resolved:/perfectbuild/Package.resolved \
-    --workdir=/perfectbuild --rm -t -p 8181:8181 --name nh-lighting perfectassistant/nh-lighting:latest .build_lin/debug/nh-lighting .build_lin/debug/nh-lighting
+    --workdir=/perfectbuild --rm -t -p 8181:8181 --name nh-lighting perfectassistant/nh-lighting .build_lin/debug/nh-lighting
 ```
 
 Connect our container to the instrumentation network
@@ -71,15 +71,26 @@ sudo docker start nh-lightning
 ### Running with deployment image
 For long term deployment its better to build an images with all the files included
 
+Compile for release
+```bash
+sudo docker run \
+    --volume=/home/dpslwk/github/instrumentation-lighting:/perfectbuild \
+    --volume=/home/dpslwk/github/instrumentation-lighting/.packages_lin:/perfectbuild/Packages \
+    --volume=/home/dpslwk/github/instrumentation-lighting/.build_lin:/perfectbuild/.build \
+    --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.pins:/perfectbuild/Package.pins \
+    --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.resolved:/perfectbuild/Package.resolved \
+    --workdir=/perfectbuild --rm -t -p 8080:8080 perfectassistant/nh-lighting swift build -c release
+```
+
 Build a deploy image
 ```bash
-sudo docker build -f PADockerfile_deploy -t perfectassistant/nh-lighting:deploy
+sudo docker build -f PADockerfile_deploy -t perfectassistant/nh-lighting:deploy .
 ```
 
 Create a container using this image, connect to the instrumentation network and start the container
 ```bash
 sudo docker create \
-    --rm -t -p 8181:8181 --name nh-lighting perfectassistant/nh-lighting:deploy
+    --rm -t -p 8181:8181 --name nh-lighting perfectassistant/nh-lighting:deploy 
 sudo docker network connect instrumentation nh-lighting
-sudo docker start nh-lightning
+sudo docker start nh-lighting
 ```
