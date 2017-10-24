@@ -231,6 +231,17 @@ class LightingController {
     }
   }
   
+  func processLight(request: RequestEvent, forSocket socket: WebSocket) {
+    guard let state = request.state,
+      let (controller, outputChannel) = findControllerAndOutputChannel(forEvent: request) else {
+        Log.warning(message: "Incomplete LightRequest: \(request)")
+        return
+    }
+    
+    // TODO: Check client has permission to make this request
+    mqtt.request(newState: state, forOutputChannel: outputChannel, onController: controller)
+  }
+  
   func processPattern(request: RequestEvent, forSocket socket: WebSocket) {
     if let patternId = request.patternId,
        let pattern = lighting.patterns.first(where: {$0.id == patternId}){
@@ -239,6 +250,7 @@ class LightingController {
         if let light = lighting.lights.first(where: {$0.id == lightPattern.lightId}),
            let outputChannel = lighting.outputChannels.first(where: {$0.id == light.outputChannelId}),
            let controller = lighting.controllers.first(where: {$0.id == outputChannel.controllerId}) {
+          // TODO: Check client has permission to make this request
           self.mqtt.request(newState: lightPattern.state, forOutputChannel: outputChannel, onController: controller)
         }
       }
@@ -293,6 +305,7 @@ extension LightingController: ControllerStateDelagate {
         
         do {
           let jsonEvent = try JSONEncoder().encode(lightStateEvent)
+          // TODO: use the wsClients dict when we start filling it
           for socket in self.sockets {
             // TODO: dispatch to an concurrent async queue?
             socket.sendStringMessage(string: String(data: jsonEvent, encoding: .utf8)!, final: true) {
@@ -311,6 +324,7 @@ extension LightingController: ControllerStateDelagate {
 extension LightingController: LightingHandlerDelegate {
   func addClientIfNeed(_ handler: WebSocketSessionHandler, request: HTTPRequest, socket: WebSocket, callback: @escaping (Bool) -> ()) {
     Log.info(message: "addClient: \(handler, request, socket)")
+    // TODO: use wsClients dict
     if (!sockets.contains(socket)) {
       sockets.append(socket)
     }
@@ -319,6 +333,7 @@ extension LightingController: LightingHandlerDelegate {
   
   func removeClient(_ socket: WebSocket, callback: @escaping (Bool) -> ()) {
     Log.info(message: "removeClient: \(socket)")
+    // TODO: use wsClients dict
     if let socketIndex = sockets.index(of: socket) {
       sockets.remove(at: socketIndex)
     }
@@ -334,13 +349,7 @@ extension LightingController: LightingHandlerDelegate {
         self.clientConnected(fromSocket: socket)
       case .LightRequest:
         // need to send out via mqtt
-        guard let state = event.state,
-              let (controller, outputChannel) = self.findControllerAndOutputChannel(forEvent: event) else {
-            Log.warning(message: "Incomplete LightRequest: \(event)")
-            return
-        }
-        
-        self.mqtt.request(newState: state, forOutputChannel: outputChannel, onController: controller)
+        self.processLight(request: event, forSocket: socket)
       case .PatternRequest:
         print("processRequest: pattern")
         // need to look up and send out bunch of mqtt stuff
