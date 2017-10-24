@@ -113,6 +113,17 @@ class LightingController {
     return routes
   }
   
+  func reload() {
+    Log.info(message: "Caught SIGHUP")
+    guard mysql.loadModels() else {
+      Log.error(message: "Failed to reload models")
+      // TODO: try agian or quit
+      return
+    }
+    
+    // TODO: let clients know they need to reconnet? or to wipe and reload there description
+  }
+  
   func findLights(forChannel channel: Int, fromController controllerName: String) -> [Light]? {
     var lights: [Light]?
     if let controller = lighting.controllers.first(where: {$0.name == controllerName}),

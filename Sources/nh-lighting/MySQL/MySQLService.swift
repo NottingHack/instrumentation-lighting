@@ -33,7 +33,9 @@ class MySQLService {
       Log.info(message: "Failure connecting to data server \(host)")
       return false
     }
-
+    
+    lighting = Lighting()
+    
     defer {
       client.close()  // defer ensures we close our db connection at the end of this request
     }

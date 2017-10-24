@@ -94,3 +94,14 @@ sudo docker create \
 sudo docker network connect instrumentation nh-lighting
 sudo docker start nh-lighting
 ```
+
+## DB reload
+A SIGHUB will cause force a db reload
+
+### macOS
+pkill -1 nh-lighting
+
+### Docker
+```bash
+sudo docker kill --signal=HUP nh-lighting
+```

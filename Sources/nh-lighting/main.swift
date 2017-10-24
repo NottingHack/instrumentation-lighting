@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import Signals
 
 let lightingController = LightingController()
+
+Signals.trap(signal: .hup) { signal in
+  lightingController.reload()
+}
 
 lightingController.start()
