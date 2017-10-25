@@ -41,7 +41,7 @@ sudo docker run \
     --volume=/home/dpslwk/github/instrumentation-lighting/.build_lin:/perfectbuild/.build \
     --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.pins:/perfectbuild/Package.pins \
     --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.resolved:/perfectbuild/Package.resolved \
-    --workdir=/perfectbuild --rm -t -p 8080:8080 perfectassistant/nh-lighting swift build
+    --workdir=/perfectbuild --rm -t perfectassistant/nh-lighting swift build
 ```
 
 ### Running in place 
@@ -79,7 +79,7 @@ sudo docker run \
     --volume=/home/dpslwk/github/instrumentation-lighting/.build_lin:/perfectbuild/.build \
     --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.pins:/perfectbuild/Package.pins \
     --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.resolved:/perfectbuild/Package.resolved \
-    --workdir=/perfectbuild --rm -t -p 8080:8080 perfectassistant/nh-lighting swift build -c release
+    --workdir=/perfectbuild --rm -t perfectassistant/nh-lighting swift build -c release
 ```
 
 Build a deploy image
