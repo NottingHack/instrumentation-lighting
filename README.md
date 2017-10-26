@@ -25,7 +25,6 @@ sudo docker network create -d macvlan  \
     -o parent=eth0.3 instrumentation
 ```
 
-
 Build the intermediary docker image with our dependencies, only needs doing if `PADockerfile_build` has changed 
 ```bash
 sudo docker build -f PADockerfile_build -t perfectassistant/nh-lighting .
