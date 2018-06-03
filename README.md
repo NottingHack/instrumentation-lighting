@@ -64,7 +64,7 @@ sudo docker network connect instrumentation nh-lighting
 
 and start the container
 ```bash
-sudo docker start nh-lightning
+sudo docker start nh-lighting
 ```
 
 ### Running with deployment image
@@ -89,7 +89,7 @@ sudo docker build -f PADockerfile_deploy -t perfectassistant/nh-lighting:deploy 
 Create a container using this image, connect to the instrumentation network and start the container
 ```bash
 sudo docker create \
-    --rm -t -p 8181:8181 --name nh-lighting perfectassistant/nh-lighting:deploy 
+    --restart=always -t -p 8181:8181 --name nh-lighting perfectassistant/nh-lighting:deploy 
 sudo docker network connect instrumentation nh-lighting
 sudo docker start nh-lighting
 ```
@@ -98,7 +98,9 @@ sudo docker start nh-lighting
 A SIGHUB will cause force a db reload
 
 ### macOS
+```bash
 pkill -1 nh-lighting
+```
 
 ### Docker
 ```bash
