@@ -89,7 +89,7 @@ sudo docker build -f PADockerfile_deploy -t perfectassistant/nh-lighting:deploy 
 Create a container using this image, connect to the instrumentation network and start the container
 ```bash
 sudo docker create \
-    --restart=always -t -p 8181:8181 --name nh-lighting perfectassistant/nh-lighting:deploy 
+    --restart=unless-stopped -t -p 8181:8181 --name nh-lighting perfectassistant/nh-lighting:deploy 
 sudo docker network connect instrumentation nh-lighting
 sudo docker start nh-lighting
 ```
