@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lighting pattern generator</title>
+  <meta name="csrf-token" content="9p5cNFsViBtysW4RBtPwemH0ZuLcZUl031i4dP3r">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="/reconnecting-websocket.min.js"></script>
+  <script language="javascript" type="text/javascript">
+    var wsUri = "ws://"+location.hostname+":8181/lighting";
+    var output, input, send;
+    var patternDescrptions = {};
+
+    function init() {
+      output = document.getElementById("output");
+      sql = document.getElementById("sql");
+      input = document.getElementById("input");
+      testWebSocket();
+    }
+
+    function testWebSocket() {
+      websocket = new ReconnectingWebSocket(wsUri, "lighting");
+      websocket.onopen = function(evt) { onOpen(evt) };
+      websocket.onclose = function(evt) { onClose(evt) };
+      websocket.onmessage = function(evt) { onMessage(evt) };
+      websocket.onerror = function(evt) { onError(evt) };
+    }
+
+    function onOpen(evt) {
+      writeToScreen("CONNECTED");
+      // fire off join json to say who we are
+      var connectRequest = {
+        "eventType": "ConnectRequest",
+        "token": document.head.querySelector('meta[name="csrf-token"]').content
+      }
+      websocket.send(JSON.stringify(connectRequest))
+    }
+
+    function onClose(evt) {
+      writeToScreen("DISCONNECTED");
+      // reconnect if still on screen? or show reconenct button
+    }
+
+    function onMessage(evt) {
+      writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'<\/span>');
+      var events = JSON.parse(evt.data);
+      console.log(events);
+      if (Array.isArray(events)) {
+        events.forEach(function(event) {
+          processEvent(event);
+        });
+      } else {
+        processEvent(events)
+      }
+    }
+
+    function onError(evt) {
+      writeToScreen('<span style="color: red;">ERROR:<\/span> ' + evt.data);
+    }
+
+    function doSend() {
+      writeToScreen('<span style="color: red;">SENDING:<\/span> ' + input.value);
+      websocket.send(input.value);
+    }
+
+    function writeToScreen(message) {
+      output.innerHTML = message;
+    }
+
+    function requestNewState(ele) {
+      var lightRequestEvent = {
+        "eventType": "LightRequest",
+        "room": ele.id.split('_')[0].replace(/-/g, ' '),
+        "light": parseInt(ele.id.split('_')[1], 10),
+        "state": "TOGGLE"
+      }
+      console.log(JSON.stringify(lightRequestEvent));
+      websocket.send(JSON.stringify(lightRequestEvent));
+    }
+
+    function requestPattern(ele) {
+      lights = patternDescrptions[ele.id].lights
+      $( "input[id^='pattern_']" ).each(function () {
+        id = parseInt(this.id.split('_')[2], 10)
+        if (lights.find(o => o.light === id)) {
+          this.checked = true
+        } else {
+          this.checked = false
+        }
+      })
+      var patternRequestEvent = {
+        "eventType": "PatternRequest",
+        "patternId": parseInt(ele.id, 10)
+      }
+      console.log(JSON.stringify(patternRequestEvent));
+      websocket.send(JSON.stringify(patternRequestEvent));
+    }
+  
+    function processEvent(event) {
+      switch (event.eventType) {
+      case "LightState":
+        $('#'+event.room.replace(/ /g, '-')+'_'+event.light).html(event.state);
+        if (event.state == "ON") {
+          $('#'+event.room.replace(/ /g, '-')+'_'+event.light).css("background-color", "green")
+        } else {
+          $('#'+event.room.replace(/ /g, '-')+'_'+event.light).css("background-color", "red")
+        }
+        break;
+      case "RoomDescription":
+        // processRoomDescription(event);
+        break;
+      case "PatternDescrption":
+        processPatternDescription(event);
+        break;
+      }
+    }
+
+    function processRoomDescription(description) {
+      var roomId = description.room.replace(/ /g, '-')
+      if (!$('#'+roomId).length) {
+        $("#rooms").append('<div id="'+roomId+'"><div>'+description.room+'</div><table><tr></tr></table></div>')
+        description.lights.forEach(function (light) {
+          $('#'+roomId+' table tr').append('<td><button id="'+roomId+'_'+light.toString()+'" onclick="requestNewState(this)" style="width:50px">0</button></td>')
+        });
+      }
+    }
+
+    function processPatternDescription(description) {
+      patternDescrptions[description.patternId] = description
+      if (!$('#patterns button#'+description.patternId).length) {
+        $("#patterns").append('<button id="'+description.patternId+'" onclick="requestPattern(this)">'+description.name+'</button>')
+      }
+    }
+
+    function generatePattern() {
+      name = $("#pattern-name").val()
+      if (name === "") {
+        console.log("Pattern name must not be emtpy")
+        sql.innerHTML = "Pattern name must not be emtpy"
+        return
+      }
+      console.log("Generating sql for pattern: "+name)
+   
+      sql.innerHTML = "INSERT INTO lighting_patterns (name) VALUES ('"+name+"');<br>INSERT INTO light_lighting_pattern (lighting_pattern_id, light_id, state) VALUES "
+      $( "input[id^='pattern_']" ).each(function () {
+          if (this.checked) {
+            // get button state 
+            id = parseInt(this.id.split('_')[2], 10)
+            state = $("button[id$='_"+id+"']").text()
+            sql.innerHTML += " (LAST_INSERT_ID(), "+ id +", '"+ state +"'),"
+          }
+      })
+      sql.innerHTML = sql.innerHTML.slice(0, -1) + ";"
+    }
+
+    window.addEventListener("load", init, false);
+  </script>
+  <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:2px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:2px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg .tg-9dsr{border-color:#3166ff}
+    .tg .tg-28sb{border-color:#f8a102}
+    .tg .tg-9ov8{border-color:#cb0000}
+    .tg .tg-81fp{border-color:#32cb00}
+  </style>
+</head>
+
+<body>
+  <h2>Pattern viewer and generator</h2>
+  <div id="patterns"><h3>View pattern</h3></div>
+  <div>
+    <h2>Lights</h2>
+    <table class="tg">
+      <tr>
+        <td class="tg-28sb"><input id="pattern_CNC-room-corridor_16" type="checkbox" ><button id="CNC-room-corridor_16" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_CNC-room-corridor_17" type="checkbox" ><button id="CNC-room-corridor_17" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_CNC-room_10" type="checkbox" ><button id="CNC-room_10" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_CNC-room_11" type="checkbox" ><button id="CNC-room_11" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9dsr"><input id="pattern_Blue-room_1" type="checkbox" ><button id="Blue-room_1" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9dsr"><input id="pattern_Blue-room_2" type="checkbox" ><button id="Blue-room_2" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9dsr"><input id="pattern_Blue-room_3" type="checkbox" ><button id="Blue-room_3" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+      <tr>
+        <td class="tg-81fp" rowspan="2"><input id="pattern_Team-storage_18" type="checkbox" ><button id="Team-storage_18" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-81fp" rowspan="2"><input id="pattern_Team-storage_19" type="checkbox" ><button id="Team-storage_19" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_CNC-room_12" type="checkbox" ><button id="CNC-room_12" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_CNC-room_13" type="checkbox" ><button id="CNC-room_13" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9dsr"><input id="pattern_Blue-room_4" type="checkbox" ><button id="Blue-room_4" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9dsr"><input id="pattern_Blue-room_5" type="checkbox" ><button id="Blue-room_5" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9dsr"><input id="pattern_Blue-room_6" type="checkbox" ><button id="Blue-room_6" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+      <tr>
+        <td class="tg-9ov8"><input id="pattern_CNC-room_14" type="checkbox" ><button id="CNC-room_14" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_CNC-room_15" type="checkbox" ><button id="CNC-room_15" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9dsr"><input id="pattern_Blue-room_7" type="checkbox" ><button id="Blue-room_7" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9dsr"><input id="pattern_Blue-room_8" type="checkbox" ><button id="Blue-room_8" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9dsr"><input id="pattern_Blue-room_9" type="checkbox" ><button id="Blue-room_9" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <h3>Generate Pattern</h3>
+    <input id="pattern-name" type="text" name="pattern-name">
+    <button onclick="generatePattern()">Generate</button>
+    <div id="sql"></div>
+  </div>
+  <h3>Debug</h3>
+  <div id="output"></div>
+</body>
+</html>
