@@ -1,0 +1,26 @@
+# Run docker-compose -f build.yml up --build
+version: '3'
+
+services:
+  nh-lighting-build:
+    build:
+      context: .
+      dockerfile: PADockerfile_build
+    command: swift build
+    volumes:
+      - "./:/perfectbuild"
+      - "./.packages_lin:/perfectbuild/Packages"
+      - "./.build_lin:/perfectbuild/.build"
+      - "./.package_lin.pins:/perfectbuild/Package.pins"
+      - "./.package_lin.resolved:/perfectbuild/Package.resolved"
+    working_dir: "/perfectbuild"
+ 
+# Equivalent to
+#docker run \
+#   --volume=/home/moop/devel/instrumentation-lighting:/perfectbuild \
+#   --volume=/home/moop/devel/instrumentation-lighting/.packages_lin:/perfectbuild/Packages \
+#   --volume=/home/moop/devel/instrumentation-lighting/.build_lin:/perfectbuild/.build \
+#   --volume=/home/moop/devel/instrumentation-lighting/.package_lin.pins:/perfectbuild/Package.pins \
+#   --volume=/home/moop/devel/instrumentation-lighting/.package_lin.resolved:/perfectbuild/Package.resolved \
+#   --workdir=/perfectbuild --rm -t perfectassistant/nh-lighting swift build
+

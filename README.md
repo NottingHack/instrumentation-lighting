@@ -94,6 +94,21 @@ sudo docker network connect instrumentation nh-lighting
 sudo docker start nh-lighting
 ```
 
+### Running with docker-compose
+If you have docker-compose installed you can save yourself some typing
+
+Compile with dockerised build environment
+```bash
+docker-compose -f build.yml up --build
+```
+
+Run in place
+```bash
+docker-compose up --build --detach
+```
+
+See build.yml and docker-compose.yml for further information
+
 ## DB reload
 A SIGHUB will cause force a db reload
 
