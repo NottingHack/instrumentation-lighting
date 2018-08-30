@@ -18,6 +18,8 @@ services:
     working_dir: "/perfectbuild"
     ports:
       - 8181:8181
+    depends_on:
+      - "mariadb"
 
   mariadb:
     image: "mariadb"
@@ -26,12 +28,16 @@ services:
       MYSQL_ROOT_PASSWORD: changethisimmediately
     volumes:
       - lighting-db:/var/lib/mysql
+    ports:
+      - 3306:3306
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+    depends_on:
+      - "mariadb"
 
 volumes:
   lighting-db:
@@ -61,7 +67,7 @@ volumes:
 #     mysql --user root --password
 #       use lighting
 #       CREATE USER 'homestead'@'%' IDENTIFIED BY 'secret';
-#       GRANT ALL PRIVILEGES ON *.* to 'homestead'@'%';
+#       GRANT ALL PRIVILEGES ON *.* to 'homestead'@'%' WITH GRANT OPTION;
 #       FLUSH PRIVILEGES;
 #  
 #   Log in with adminer (http://localhost:8080) and import the database from lighting.sql
