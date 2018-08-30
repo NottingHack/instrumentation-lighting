@@ -121,3 +121,8 @@ pkill -1 nh-lighting
 ```bash
 sudo docker kill --signal=HUP nh-lighting
 ```
+
+### docker-compose
+```bash
+docker-compose kill -s HUP nh-lighting
+```

@@ -1,7 +1,7 @@
-# Run docker-compose up --build --detach
+# Run docker-compose up --build -d
 # To see output run docker-compose logs
 # To see process status run docker-compose ps
-version: '3'
+version: '2'
 
 services:
   nh-lighting:
@@ -19,14 +19,11 @@ services:
     ports:
       - 8181:8181
 
-  mysql:
-    image: "mysql"
-    command: --default-authentication-plugin=mysql_native_password
+  mariadb:
+    image: "mariadb"
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: changethisimmediately
-    ports:
-      - 3306:3306
     volumes:
       - lighting-db:/var/lib/mysql
 
@@ -52,15 +49,14 @@ volumes:
 #
 # docker start nh-lighting
 #
-# Includes a mysql server + adminer for luck
+# Includes a MariaDB server + adminer for luck
 #
 # MySQL data will be stored in a volume named lighting-db
 #
 # For first time database setup once the containers are created, run the following:
-#   docker exec --tty --interactive instrumentation-lighting_mysql_1 bash
-#     mysql_secure_installation
+#   docker exec --tty --interactive instrumentation-lighting_mariadb bash
+#     mysqladmin --user root --password password
 #       # Set a better password
-#       # Set the rest up to taste
 #     mysqladmin create lighting --password
 #     mysql --user root --password
 #       use lighting

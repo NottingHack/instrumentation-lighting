@@ -1,5 +1,5 @@
 # Run docker-compose -f build.yml up --build
-version: '3'
+version: '2'
 
 services:
   nh-lighting-build:
