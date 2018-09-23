@@ -94,7 +94,7 @@ sudo docker network connect instrumentation nh-lighting
 sudo docker start nh-lighting
 ```
 
-### Running with docker-compose
+### Running with docker-compose (for dev only)
 If you have docker-compose installed you can save yourself some typing
 
 Compile with dockerised build environment
