@@ -2,12 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>nh-lighting test page</title>
+  <title>NH-Lighting Dev Page</title>
   <meta name="csrf-token" content="9p5cNFsViBtysW4RBtPwemH0ZuLcZUl031i4dP3r">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="/reconnecting-websocket.min.js"></script>
+  <script src="http://queen:8181/reconnecting-websocket.min.js"></script>
+
   <script language="javascript" type="text/javascript">
-    var wsUri = "ws://"+location.hostname+":8181/lighting";
+    `var wsUri = "ws://"+location.hostname+":8181/lighting";`
+    var wsUri = "ws://queen:8181/lighting";
     var output, input, send;
 
     function init() {
@@ -107,16 +113,16 @@
     function processRoomDescription(description) {
       var roomId = description.room.replace(/ /g, '-')
       if (!$('#'+roomId).length) {
-        $("#rooms").append('<div id="'+roomId+'"><div>'+description.room+'</div><table><tr></tr></table></div>')
+        $("#rooms").append('<div id="'+roomId+'"><div>'+description.room+'</div><table><tr></tr></table></div> <hr>')
         description.lights.forEach(function (light) {
-          $('#'+roomId+' table tr').append('<td><button id="'+roomId+'_'+light.toString()+'" onclick="requestNewState(this)" style="width:50px">0</button></td>')
+          $('#'+roomId+' table tr').append('<td><button class="btn" id="'+roomId+'_'+light.toString()+'" onclick="requestNewState(this)" style="width:50px">0</button></td>')
         });
       }
     }
 
     function processPatternDescription(description) {
       if (!$('#patterns button#'+description.patternId).length) {
-        $("#patterns").append('<button id="'+description.patternId+'" onclick="requestPattern(this)">'+description.name+'</button>')
+        $("#patterns").append('<button class="btn btn-info" style="margin-right:5px; margin-top:5px;" id="'+description.patternId+'" onclick="requestPattern(this)">'+description.name+'</button>')
       }
     }
 
@@ -125,11 +131,15 @@
 </head>
 
 <body>
-  <h2>nh-lighting test page</h2>
+  <div class="container">
+  <h2>NH-Lighting Dev Page</h2>
+  <hr>
   <div id="patterns"><h3>Patterns <a href="pattern.html">(Generator)</a></h3></div>
-  <div id="rooms"><h3>Rooms</h3>
+  <div id="rooms" style="margin-top:50px"><h3>Rooms</h3>
+    <hr>
   </div>
   <h3>Debug</h3>
   <div id="output"></div>
+</div>
 </body>
 </html>
