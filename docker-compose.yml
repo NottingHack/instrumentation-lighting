@@ -1,0 +1,78 @@
+# Run docker-compose up --build -d
+# To see output run docker-compose logs
+# To see process status run docker-compose ps
+version: '2'
+
+services:
+  nh-lighting:
+    build:
+      context: .
+      dockerfile: PADockerfile_build
+    command: .build_lin/debug/nh-lighting
+    volumes:
+      - "./:/perfectbuild"
+      - "./.packages_lin:/perfectbuild/Packages"
+      - "./.build_lin:/perfectbuild/.build"
+      - "./.package_lin.pins:/perfectbuild/Package.pins"
+      - "./.package_lin.resolved:/perfectbuild/Package.resolved"
+    working_dir: "/perfectbuild"
+    ports:
+      - 8181:8181
+    depends_on:
+      - "mariadb"
+
+  mariadb:
+    image: "mariadb"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: changethisimmediately
+    volumes:
+      - lighting-db:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - "mariadb"
+
+volumes:
+  lighting-db:
+ 
+# Equivalent to
+# docker create \
+#    --volume=/home/dpslwk/github/instrumentation-lighting:/perfectbuild \
+#    --volume=/home/dpslwk/github/instrumentation-lighting/.packages_lin:/perfectbuild/Packages \
+#    --volume=/home/dpslwk/github/instrumentation-lighting/.build_lin:/perfectbuild/.build \
+#    --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.pins:/perfectbuild/Package.pins \
+#    --volume=/home/dpslwk/github/instrumentation-lighting/.package_lin.resolved:/perfectbuild/Package.resolved \
+#    --workdir=/perfectbuild --rm -t -p 8181:8181 --name nh-lighting perfectassistant/nh-lighting .build_lin/debug/nh-lighting
+#
+# docker network connect instrumentation nh-lighting
+#
+# docker start nh-lighting
+#
+# Includes a MariaDB server + adminer for luck
+#
+# MySQL data will be stored in a volume named lighting-db
+#
+# For first time database setup once the containers are created, run the following:
+#   docker exec --tty --interactive instrumentation-lighting_mariadb bash
+#     mysqladmin --user root --password password
+#       # Set a better password
+#     mysqladmin create lighting --password
+#     mysql --user root --password
+#       use lighting
+#       CREATE USER 'homestead'@'%' IDENTIFIED BY 'secret';
+#       GRANT ALL PRIVILEGES ON *.* to 'homestead'@'%' WITH GRANT OPTION;
+#       FLUSH PRIVILEGES;
+#  
+#   Log in with adminer (http://localhost:8080) and import the database from lighting.sql
+#     server: mysql
+#     username: homestead
+#     password: secret
+#     database: lighting
+#

@@ -31,6 +31,7 @@ class MySQLService {
   func loadModels() -> Bool {
     guard client.connect(host: host, user: user, password: password, db: database) else {
       Log.info(message: "Failure connecting to data server \(host)")
+      Log.info(message: client.errorMessage())
       return false
     }
     
