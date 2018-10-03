@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "cmosquitto",
-        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-libMosquitto.git",
+        "package": "Signals",
+        "repositoryURL": "https://github.com/IBM-Swift/BlueSignals.git",
         "state": {
           "branch": null,
-          "revision": "c5b40a1b53b66d61fde1382c1a616be867f8682e",
-          "version": "1.0.0"
+          "revision": "f1a8a701c49fd214da3fc3458c1211f17c8e13f4",
+          "version": "1.0.10"
         }
       },
       {
@@ -15,8 +15,26 @@
         "repositoryURL": "https://github.com/IBM-Swift/Configuration.git",
         "state": {
           "branch": null,
-          "revision": "9973bcc64f41c81c9716bf1306079be61f29c998",
-          "version": "1.0.4"
+          "revision": "a5e3ce4619089069697bbef5abfe3687f6830b9d",
+          "version": "3.0.1"
+        }
+      },
+      {
+        "package": "FileKit",
+        "repositoryURL": "https://github.com/IBM-Swift/FileKit.git",
+        "state": {
+          "branch": null,
+          "revision": "319016dbf4b3ce04589265c23c9cac0016fe8096",
+          "version": "0.0.1"
+        }
+      },
+      {
+        "package": "LoggerAPI",
+        "repositoryURL": "https://github.com/IBM-Swift/LoggerAPI.git",
+        "state": {
+          "branch": null,
+          "revision": "5041f2673aa75d6e973d9b6bd3956bc5068387c8",
+          "version": "1.7.3"
         }
       },
       {
@@ -24,8 +42,53 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-COpenSSL-Linux.git",
         "state": {
           "branch": null,
-          "revision": "6c75ce4b9e6218d6405a203ef789fbb6f5e72df8",
-          "version": "3.0.1"
+          "revision": "4133914decf2cdba452ffa7507b3f1c41a379913",
+          "version": "3.0.2"
+        }
+      },
+      {
+        "package": "PerfectCrypto",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Crypto.git",
+        "state": {
+          "branch": null,
+          "revision": "54e0f7c2a9d7355fca3c23e0f88096ac3765e08b",
+          "version": "3.1.2"
+        }
+      },
+      {
+        "package": "PerfectCZlib",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-CZlib-src.git",
+        "state": {
+          "branch": null,
+          "revision": "b63e46909aad937c6434766f8f8c6720d8f3bd05",
+          "version": "0.0.4"
+        }
+      },
+      {
+        "package": "PerfectHTTP",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-HTTP.git",
+        "state": {
+          "branch": null,
+          "revision": "5ad1f4bb8f60447f308b8d8d35289c5a1d74c54f",
+          "version": "3.1.3"
+        }
+      },
+      {
+        "package": "PerfectHTTPServer",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-HTTPServer.git",
+        "state": {
+          "branch": null,
+          "revision": "9b31c02d5acfbd381dbfd944ec4cef2870854186",
+          "version": "3.0.18"
+        }
+      },
+      {
+        "package": "cmosquitto",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-libMosquitto.git",
+        "state": {
+          "branch": null,
+          "revision": "c5b40a1b53b66d61fde1382c1a616be867f8682e",
+          "version": "1.0.0"
         }
       },
       {
@@ -38,21 +101,12 @@
         }
       },
       {
-        "package": "LoggerAPI",
-        "repositoryURL": "https://github.com/IBM-Swift/LoggerAPI.git",
-        "state": {
-          "branch": null,
-          "revision": "6b62fe66da9b8794d6581e5c341710eea3173cd4",
-          "version": "1.7.1"
-        }
-      },
-      {
         "package": "MariaDB",
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-MariaDB.git",
         "state": {
           "branch": null,
-          "revision": "182a0d9351b08ae916b01b1ba9cee35e1b1a0bd1",
-          "version": "3.0.1"
+          "revision": "d6db62a2065673692adca542c992560da5ed9fa2",
+          "version": "3.0.2"
         }
       },
       {
@@ -62,42 +116,6 @@
           "branch": null,
           "revision": "38892169cd9b4057c019403f83e015ac1bc11afd",
           "version": "2.0.2"
-        }
-      },
-      {
-        "package": "PerfectCrypto",
-        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Crypto.git",
-        "state": {
-          "branch": null,
-          "revision": "c14a840457bf2c951fbb94a37ed26645e7cc7365",
-          "version": "3.0.1"
-        }
-      },
-      {
-        "package": "PerfectHTTP",
-        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-HTTP.git",
-        "state": {
-          "branch": null,
-          "revision": "2454e72f55145c4efa82805848e962070c7245c3",
-          "version": "3.0.0"
-        }
-      },
-      {
-        "package": "PerfectHTTPServer",
-        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-HTTPServer.git",
-        "state": {
-          "branch": null,
-          "revision": "f493937203568db511425117574487821378eac5",
-          "version": "3.0.0"
-        }
-      },
-      {
-        "package": "PerfectLib",
-        "repositoryURL": "https://github.com/PerfectlySoft/PerfectLib.git",
-        "state": {
-          "branch": null,
-          "revision": "2f1b820a7a091336ee80e2450a5076c1c6d0624d",
-          "version": "3.0.0"
         }
       },
       {
@@ -114,8 +132,8 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Net.git",
         "state": {
           "branch": null,
-          "revision": "5e137023e0373b3bdd46a5c80c3ec868fd1c383d",
-          "version": "3.0.0"
+          "revision": "32cf5846ce212bf6aa2cb9d27a9b4f230355c1f9",
+          "version": "3.2.0"
         }
       },
       {
@@ -123,8 +141,8 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-Thread.git",
         "state": {
           "branch": null,
-          "revision": "15e3eb947d2465a072c41c9a0bfbefa6c48b34ee",
-          "version": "3.0.1"
+          "revision": "04fcd2d29f50e05dbca907219322fd475c205c33",
+          "version": "3.0.5"
         }
       },
       {
@@ -132,17 +150,17 @@
         "repositoryURL": "https://github.com/PerfectlySoft/Perfect-WebSockets.git",
         "state": {
           "branch": null,
-          "revision": "aabbb88a6471602ca8b551588fc24da8d5cb7de9",
-          "version": "3.0.0"
+          "revision": "15c2ef528603438c84286f89b8ae31cbf415bbac",
+          "version": "3.0.2"
         }
       },
       {
-        "package": "Signals",
-        "repositoryURL": "https://github.com/IBM-Swift/BlueSignals.git",
+        "package": "PerfectLib",
+        "repositoryURL": "https://github.com/PerfectlySoft/PerfectLib.git",
         "state": {
           "branch": null,
-          "revision": "0fab5a9f166e96f17bb9646dc56cd22a6f3c3757",
-          "version": "0.9.50"
+          "revision": "60e44e4c62e293844581205528eefdc7e1153199",
+          "version": "3.1.2"
         }
       }
     ]
