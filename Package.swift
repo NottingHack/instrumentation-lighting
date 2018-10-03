@@ -10,8 +10,8 @@ let package = Package(
 		.package(url: "https://github.com/PerfectlySoft/Perfect-WebSockets.git", "3.0.0"..<"4.0.0"),
 		.package(url: "https://github.com/PerfectlySoft/Perfect-Mosquitto", "3.0.0"..<"4.0.0"),
 		.package(url: "https://github.com/PerfectlySoft/Perfect-MariaDB.git", "3.0.0"..<"4.0.0"),
-		.package(url: "https://github.com/IBM-Swift/BlueSignals.git", "0.0.0"..<"1.0.0"),
-		.package(url: "https://github.com/IBM-Swift/Configuration.git", "1.0.0"..<"2.0.0")
+		.package(url: "https://github.com/IBM-Swift/BlueSignals.git", "1.0.0"..<"2.0.0"),
+		.package(url: "https://github.com/IBM-Swift/Configuration.git", "3.0.0"..<"4.0.0")
 	],
 	targets: [
 		.target(name: "nh-lighting", dependencies: ["PerfectMosquitto", "Signals", "PerfectHTTPServer", "PerfectWebSockets", "MariaDB", "Configuration"])
