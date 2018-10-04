@@ -242,10 +242,10 @@ class LightingController {
     mqtt.request(newState: state, forOutputChannel: outputChannel, onController: controller)
   }
   
-  func processPattern(request: RequestEvent, forSocket socket: WebSocket) {
-    if let patternId = request.patternId,
-       let pattern = lighting.patterns.first(where: {$0.id == patternId}){
+  func processPattern(patternId: Int) {
+    if let pattern = lighting.patterns.first(where: {$0.id == patternId}){
       let lightPatterns = lighting.lightPatterns.filter({$0.patternId == pattern.id})
+      // send out mqtt request for each light in the pattern
       for lightPattern in lightPatterns {
         if let light = lighting.lights.first(where: {$0.id == lightPattern.lightId}),
            let outputChannel = lighting.outputChannels.first(where: {$0.id == light.outputChannelId}),
@@ -254,21 +254,28 @@ class LightingController {
           self.mqtt.request(newState: lightPattern.state, forOutputChannel: outputChannel, onController: controller)
         }
       }
+      // now check to see if we need to schedule a call to procees the next patttern
+      if let nextPatternId = pattern.nextPatternId,
+         let timeout = pattern.timeout {
+        let timeoutSeconds = Double(timeout) / 1000.0
+        processQueue.asyncAfter(deadline: .now() + timeoutSeconds) {
+          self.processPattern(patternId: nextPatternId)
+        }
+      }
+    }
+  }
+  
+  func processPattern(request: RequestEvent, forSocket socket: WebSocket) {
+    if let patternId = request.patternId {
+      processPattern(patternId: patternId)
     }
   }
     
   func processPattern(forChannel channel: Int, fromController controller: String, withState state: ChannelState) {
     if (state == .ON) {
       if let inputChannel = lighting.inputChannels.first(where: {$0.channel == channel}),
-         let pattern = lighting.patterns.first(where: {$0.id == inputChannel.patternId}) {
-        let lightPatterns = lighting.lightPatterns.filter({$0.patternId == pattern.id})
-        for lightPattern in lightPatterns {
-          if let light = lighting.lights.first(where: {$0.id == lightPattern.lightId}),
-             let outputChannel = lighting.outputChannels.first(where: {$0.id == light.outputChannelId}),
-             let controller = lighting.controllers.first(where: {$0.id == outputChannel.controllerId}) {
-            self.mqtt.request(newState: lightPattern.state, forOutputChannel: outputChannel, onController: controller)
-          }
-        }
+         let patternId = inputChannel.patternId {
+        processPattern(patternId: patternId)
       }
     }
   }

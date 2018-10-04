@@ -2429,23 +2429,23 @@
       "OBJ_396" = {
          isa = "PBXGroup";
          children = (
+            "PerfectThread::PerfectThread::Product",
             "PerfectMosquitto::PerfectMosquitto::Product",
-            "PerfectHTTPServer::PerfectHTTPServer::Product",
+            "Configuration::Configuration::Product",
+            "FileKit::FileKit::Product",
+            "LoggerAPI::LoggerAPI::Product",
             "PerfectCrypto::PerfectCrypto::Product",
             "Signals::Signals::Product",
-            "Configuration::Configuration::Product",
-            "PerfectHTTPServer::PerfectCHTTPParser::Product",
-            "COpenSSL::COpenSSL::Product",
-            "nh-lighting::nh-lighting::Product",
-            "LoggerAPI::LoggerAPI::Product",
-            "MariaDB::MariaDB::Product",
-            "PerfectLib::PerfectLib::Product",
-            "PerfectNet::PerfectNet::Product",
             "PerfectWebSockets::PerfectWebSockets::Product",
-            "FileKit::FileKit::Product",
+            "MariaDB::MariaDB::Product",
+            "PerfectNet::PerfectNet::Product",
             "PerfectCZlib::PerfectCZlib::Product",
-            "PerfectThread::PerfectThread::Product",
-            "PerfectHTTP::PerfectHTTP::Product"
+            "PerfectHTTP::PerfectHTTP::Product",
+            "PerfectHTTPServer::PerfectCHTTPParser::Product",
+            "nh-lighting::nh-lighting::Product",
+            "PerfectLib::PerfectLib::Product",
+            "COpenSSL::COpenSSL::Product",
+            "PerfectHTTPServer::PerfectHTTPServer::Product"
          );
          name = "Products";
          path = "";
@@ -3412,7 +3412,7 @@
          isa = "PBXGroup";
          children = (
             "OBJ_55",
-            "OBJ_76",
+            "OBJ_60",
             "OBJ_81"
          );
          name = "PerfectHTTPServer 3.0.18";
@@ -3463,15 +3463,10 @@
          isa = "PBXGroup";
          children = (
             "OBJ_56",
-            "OBJ_59",
-            "OBJ_71",
-            "OBJ_72",
-            "OBJ_73",
-            "OBJ_74",
-            "OBJ_75"
+            "OBJ_57"
          );
-         name = "PerfectHTTPServer";
-         path = ".build/checkouts/Perfect-HTTPServer.git--752916710230327080/Sources/PerfectHTTPServer";
+         name = "PerfectCHTTPParser";
+         path = ".build/checkouts/Perfect-HTTPServer.git--752916710230327080/Sources/PerfectCHTTPParser";
          sourceTree = "SOURCE_ROOT";
       };
       "OBJ_550" = {
@@ -3515,13 +3510,8 @@
          fileRef = "OBJ_282";
       };
       "OBJ_56" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_57",
-            "OBJ_58"
-         );
-         name = "HTTP11";
-         path = "HTTP11";
+         isa = "PBXFileReference";
+         path = "http_parser.c";
          sourceTree = "<group>";
       };
       "OBJ_560" = {
@@ -3565,8 +3555,13 @@
          fileRef = "OBJ_292";
       };
       "OBJ_57" = {
-         isa = "PBXFileReference";
-         path = "HTTP11Request.swift";
+         isa = "PBXGroup";
+         children = (
+            "OBJ_58",
+            "OBJ_59"
+         );
+         name = "include";
+         path = "include";
          sourceTree = "<group>";
       };
       "OBJ_570" = {
@@ -3611,7 +3606,7 @@
       };
       "OBJ_58" = {
          isa = "PBXFileReference";
-         path = "HTTP11Response.swift";
+         path = "http_parser.h";
          sourceTree = "<group>";
       };
       "OBJ_580" = {
@@ -3655,22 +3650,9 @@
          fileRef = "OBJ_312";
       };
       "OBJ_59" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_60",
-            "OBJ_61",
-            "OBJ_62",
-            "OBJ_63",
-            "OBJ_64",
-            "OBJ_65",
-            "OBJ_66",
-            "OBJ_67",
-            "OBJ_68",
-            "OBJ_69",
-            "OBJ_70"
-         );
-         name = "HTTP2";
-         path = "HTTP2";
+         isa = "PBXFileReference";
+         name = "module.modulemap";
+         path = "/Users/matt/Dropbox/HackspaceInstrumentation/github/instrumentation-lighting/.build/checkouts/Perfect-HTTPServer.git--752916710230327080/Sources/PerfectCHTTPParser/include/module.modulemap";
          sourceTree = "<group>";
       };
       "OBJ_590" = {
@@ -3720,9 +3702,19 @@
          sourceTree = "<group>";
       };
       "OBJ_60" = {
-         isa = "PBXFileReference";
-         path = "HPACK.swift";
-         sourceTree = "<group>";
+         isa = "PBXGroup";
+         children = (
+            "OBJ_61",
+            "OBJ_64",
+            "OBJ_76",
+            "OBJ_77",
+            "OBJ_78",
+            "OBJ_79",
+            "OBJ_80"
+         );
+         name = "PerfectHTTPServer";
+         path = ".build/checkouts/Perfect-HTTPServer.git--752916710230327080/Sources/PerfectHTTPServer";
+         sourceTree = "SOURCE_ROOT";
       };
       "OBJ_600" = {
          isa = "PBXBuildFile";
@@ -3765,8 +3757,13 @@
          fileRef = "OBJ_332";
       };
       "OBJ_61" = {
-         isa = "PBXFileReference";
-         path = "HTTP2.swift";
+         isa = "PBXGroup";
+         children = (
+            "OBJ_62",
+            "OBJ_63"
+         );
+         name = "HTTP11";
+         path = "HTTP11";
          sourceTree = "<group>";
       };
       "OBJ_610" = {
@@ -3811,7 +3808,7 @@
       };
       "OBJ_62" = {
          isa = "PBXFileReference";
-         path = "HTTP2Client.swift";
+         path = "HTTP11Request.swift";
          sourceTree = "<group>";
       };
       "OBJ_620" = {
@@ -3856,7 +3853,7 @@
       };
       "OBJ_63" = {
          isa = "PBXFileReference";
-         path = "HTTP2Frame.swift";
+         path = "HTTP11Response.swift";
          sourceTree = "<group>";
       };
       "OBJ_630" = {
@@ -3900,8 +3897,22 @@
          fileRef = "OBJ_362";
       };
       "OBJ_64" = {
-         isa = "PBXFileReference";
-         path = "HTTP2FrameReader.swift";
+         isa = "PBXGroup";
+         children = (
+            "OBJ_65",
+            "OBJ_66",
+            "OBJ_67",
+            "OBJ_68",
+            "OBJ_69",
+            "OBJ_70",
+            "OBJ_71",
+            "OBJ_72",
+            "OBJ_73",
+            "OBJ_74",
+            "OBJ_75"
+         );
+         name = "HTTP2";
+         path = "HTTP2";
          sourceTree = "<group>";
       };
       "OBJ_640" = {
@@ -3946,7 +3957,7 @@
       };
       "OBJ_65" = {
          isa = "PBXFileReference";
-         path = "HTTP2FrameWriter.swift";
+         path = "HPACK.swift";
          sourceTree = "<group>";
       };
       "OBJ_650" = {
@@ -4024,7 +4035,7 @@
       };
       "OBJ_66" = {
          isa = "PBXFileReference";
-         path = "HTTP2PrefaceValidator.swift";
+         path = "HTTP2.swift";
          sourceTree = "<group>";
       };
       "OBJ_660" = {
@@ -4144,7 +4155,7 @@
       };
       "OBJ_67" = {
          isa = "PBXFileReference";
-         path = "HTTP2Request.swift";
+         path = "HTTP2Client.swift";
          sourceTree = "<group>";
       };
       "OBJ_670" = {
@@ -4212,7 +4223,7 @@
       };
       "OBJ_68" = {
          isa = "PBXFileReference";
-         path = "HTTP2Response.swift";
+         path = "HTTP2Frame.swift";
          sourceTree = "<group>";
       };
       "OBJ_680" = {
@@ -4328,7 +4339,7 @@
       };
       "OBJ_69" = {
          isa = "PBXFileReference";
-         path = "HTTP2Session.swift";
+         path = "HTTP2FrameReader.swift";
          sourceTree = "<group>";
       };
       "OBJ_690" = {
@@ -4490,7 +4501,7 @@
       };
       "OBJ_70" = {
          isa = "PBXFileReference";
-         path = "HTTP2SessionSettings.swift";
+         path = "HTTP2FrameWriter.swift";
          sourceTree = "<group>";
       };
       "OBJ_700" = {
@@ -4609,7 +4620,7 @@
       };
       "OBJ_71" = {
          isa = "PBXFileReference";
-         path = "HTTPContentCompression.swift";
+         path = "HTTP2PrefaceValidator.swift";
          sourceTree = "<group>";
       };
       "OBJ_710" = {
@@ -4729,7 +4740,7 @@
       };
       "OBJ_72" = {
          isa = "PBXFileReference";
-         path = "HTTPMultiplexer.swift";
+         path = "HTTP2Request.swift";
          sourceTree = "<group>";
       };
       "OBJ_721" = {
@@ -4825,7 +4836,7 @@
       };
       "OBJ_725" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_77";
+         fileRef = "OBJ_56";
       };
       "OBJ_726" = {
          isa = "PBXFrameworksBuildPhase";
@@ -4881,7 +4892,7 @@
       };
       "OBJ_73" = {
          isa = "PBXFileReference";
-         path = "HTTPServer.swift";
+         path = "HTTP2Response.swift";
          sourceTree = "<group>";
       };
       "OBJ_730" = {
@@ -4976,7 +4987,7 @@
       };
       "OBJ_74" = {
          isa = "PBXFileReference";
-         path = "HTTPServerEx.swift";
+         path = "HTTP2Session.swift";
          sourceTree = "<group>";
       };
       "OBJ_740" = {
@@ -5023,7 +5034,7 @@
       };
       "OBJ_75" = {
          isa = "PBXFileReference";
-         path = "HTTPServerExConfig.swift";
+         path = "HTTP2SessionSettings.swift";
          sourceTree = "<group>";
       };
       "OBJ_750" = {
@@ -5178,14 +5189,9 @@
          fileRef = "OBJ_132";
       };
       "OBJ_76" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_77",
-            "OBJ_78"
-         );
-         name = "PerfectCHTTPParser";
-         path = ".build/checkouts/Perfect-HTTPServer.git--752916710230327080/Sources/PerfectCHTTPParser";
-         sourceTree = "SOURCE_ROOT";
+         isa = "PBXFileReference";
+         path = "HTTPContentCompression.swift";
+         sourceTree = "<group>";
       };
       "OBJ_760" = {
          isa = "PBXBuildFile";
@@ -5233,7 +5239,7 @@
       };
       "OBJ_77" = {
          isa = "PBXFileReference";
-         path = "http_parser.c";
+         path = "HTTPMultiplexer.swift";
          sourceTree = "<group>";
       };
       "OBJ_770" = {
@@ -5300,13 +5306,8 @@
          );
       };
       "OBJ_78" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_79",
-            "OBJ_80"
-         );
-         name = "include";
-         path = "include";
+         isa = "PBXFileReference";
+         path = "HTTPServer.swift";
          sourceTree = "<group>";
       };
       "OBJ_780" = {
@@ -5435,7 +5436,7 @@
       };
       "OBJ_79" = {
          isa = "PBXFileReference";
-         path = "http_parser.h";
+         path = "HTTPServerEx.swift";
          sourceTree = "<group>";
       };
       "OBJ_790" = {
@@ -5500,8 +5501,7 @@
       };
       "OBJ_80" = {
          isa = "PBXFileReference";
-         name = "module.modulemap";
-         path = "/Users/matt/Dropbox/HackspaceInstrumentation/github/instrumentation-lighting/.build/checkouts/Perfect-HTTPServer.git--752916710230327080/Sources/PerfectCHTTPParser/include/module.modulemap";
+         path = "HTTPServerExConfig.swift";
          sourceTree = "<group>";
       };
       "OBJ_800" = {
@@ -5720,7 +5720,7 @@
       };
       "OBJ_819" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_57";
+         fileRef = "OBJ_62";
       };
       "OBJ_82" = {
          isa = "PBXGroup";
@@ -5734,43 +5734,43 @@
       };
       "OBJ_820" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_58";
+         fileRef = "OBJ_63";
       };
       "OBJ_821" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_60";
+         fileRef = "OBJ_65";
       };
       "OBJ_822" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_61";
+         fileRef = "OBJ_66";
       };
       "OBJ_823" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_62";
+         fileRef = "OBJ_67";
       };
       "OBJ_824" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_63";
+         fileRef = "OBJ_68";
       };
       "OBJ_825" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_64";
+         fileRef = "OBJ_69";
       };
       "OBJ_826" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_65";
+         fileRef = "OBJ_70";
       };
       "OBJ_827" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_66";
+         fileRef = "OBJ_71";
       };
       "OBJ_828" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_67";
+         fileRef = "OBJ_72";
       };
       "OBJ_829" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_68";
+         fileRef = "OBJ_73";
       };
       "OBJ_83" = {
          isa = "PBXGroup";
@@ -5798,31 +5798,31 @@
       };
       "OBJ_830" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_69";
+         fileRef = "OBJ_74";
       };
       "OBJ_831" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_70";
+         fileRef = "OBJ_75";
       };
       "OBJ_832" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_71";
+         fileRef = "OBJ_76";
       };
       "OBJ_833" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_72";
+         fileRef = "OBJ_77";
       };
       "OBJ_834" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_73";
+         fileRef = "OBJ_78";
       };
       "OBJ_835" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_74";
+         fileRef = "OBJ_79";
       };
       "OBJ_836" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_75";
+         fileRef = "OBJ_80";
       };
       "OBJ_837" = {
          isa = "PBXFrameworksBuildPhase";
