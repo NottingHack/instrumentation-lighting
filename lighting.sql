@@ -83,6 +83,7 @@ CREATE TABLE `lighting_input_channels` (
   `channel` int(11) NOT NULL,
   `lighting_controller_id` int(11) NOT NULL,
   `lighting_pattern_id` int(11) DEFAULT NULL,
+  `statefull` int(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `lighting_input_channels_fk1` (`lighting_pattern_id`),
   KEY `lighting_input_channels_fk0` (`lighting_controller_id`),

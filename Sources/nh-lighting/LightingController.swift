@@ -242,7 +242,7 @@ class LightingController {
     mqtt.request(newState: state, forOutputChannel: outputChannel, onController: controller)
   }
   
-  func processPattern(patternId: Int) {
+  func processPattern(patternId: Int, inverted: Bool = false) {
     if let pattern = lighting.patterns.first(where: {$0.id == patternId}){
       let lightPatterns = lighting.lightPatterns.filter({$0.patternId == pattern.id})
       // send out mqtt request for each light in the pattern
@@ -251,7 +251,21 @@ class LightingController {
            let outputChannel = lighting.outputChannels.first(where: {$0.id == light.outputChannelId}),
            let controller = lighting.controllers.first(where: {$0.id == outputChannel.controllerId}) {
           // TODO: Check client has permission to make this request
-          self.mqtt.request(newState: lightPattern.state, forOutputChannel: outputChannel, onController: controller)
+          
+          var newState = lightPattern.state
+          
+          if inverted {
+            switch lightPattern.state {
+            case .ON:
+              newState = .OFF
+            case .OFF:
+              newState = .ON
+            case .TOGGLE:
+              break
+            }
+          }
+          
+          self.mqtt.request(newState: newState, forOutputChannel: outputChannel, onController: controller)
         }
       }
       // now check to see if we need to schedule a call to procees the next patttern
@@ -259,23 +273,36 @@ class LightingController {
          let timeout = pattern.timeout {
         let timeoutSeconds = Double(timeout) / 1000.0
         processQueue.asyncAfter(deadline: .now() + timeoutSeconds) {
-          self.processPattern(patternId: nextPatternId)
+          self.processPattern(patternId: nextPatternId, inverted: inverted)
         }
       }
     }
   }
   
+  // processPattern for a json request
   func processPattern(request: RequestEvent, forSocket socket: WebSocket) {
     if let patternId = request.patternId {
       processPattern(patternId: patternId)
     }
   }
-    
+  
+  // processPattern for a controller input channel
   func processPattern(forChannel channel: Int, fromController controller: String, withState state: ChannelState) {
     if (state == .ON) {
       if let inputChannel = lighting.inputChannels.first(where: {$0.channel == channel}),
          let patternId = inputChannel.patternId {
-        processPattern(patternId: patternId)
+        if inputChannel.statefull {
+          if let trackingSatate = inputChannelStateTracking[inputChannel.id] {
+            if trackingSatate {
+              processPattern(patternId: patternId, inverted: true)
+            } else {
+              processPattern(patternId: patternId)
+            }
+            
+            // flip the tracking state
+            inputChannelStateTracking[inputChannel.id] = !trackingSatate
+          }
+        }
       }
     }
   }

@@ -163,7 +163,8 @@ class MySQLService {
     return load(select) { (row) in
       guard let id = Int(row[0]!),
             let channel = Int(row[1]!),
-            let controllerId = Int(row[2]!) else {
+            let controllerId = Int(row[2]!),
+            let statefull = Int(row[4]!) else {
         return
       }
       
@@ -172,7 +173,14 @@ class MySQLService {
         patternId = Int(patternString)
       }
     
-      lighting.inputChannels.append(InputChannel(id: id, channel: channel, controllerId: controllerId, patternId: patternId))
+      lighting.inputChannels.append(InputChannel(id: id, channel: channel, controllerId: controllerId, patternId: patternId, statefull: statefull == 1))
+      
+      if !inputChannelStateTracking.keys.contains(id) {
+        // only add the id tracking if its not allready therey
+        // this way we keep state over DB reload
+        inputChannelStateTracking[id] = false
+      }
+      
     }
   }
 

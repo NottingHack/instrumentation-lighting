@@ -50,6 +50,7 @@ struct InputChannel {
   var channel: Int
   var controllerId: Int
   var patternId: Int?
+  var statefull: Bool
 }
 
 struct Pattern {
@@ -84,6 +85,7 @@ struct Lighting {
 }
 
 var lighting = Lighting()
+var inputChannelStateTracking: [Int : Bool] = [:]
 
 class CurrentLightState {
   let id: Int
