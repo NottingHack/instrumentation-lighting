@@ -302,6 +302,8 @@ class LightingController {
             // flip the tracking state
             inputChannelStateTracking[inputChannel.id] = !trackingSatate
           }
+        } else {
+          processPattern(patternId: patternId)
         }
       }
     }
