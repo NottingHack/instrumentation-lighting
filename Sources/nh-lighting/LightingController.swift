@@ -287,9 +287,10 @@ class LightingController {
   }
   
   // processPattern for a controller input channel
-  func processPattern(forChannel channel: Int, fromController controller: String, withState state: ChannelState) {
+  func processPattern(forChannel channel: Int, fromController controllerName: String, withState state: ChannelState) {
     if (state == .ON) {
-      if let inputChannel = lighting.inputChannels.first(where: {$0.channel == channel}),
+      if let controller = lighting.controllers.first(where: {$0.name == controllerName}),
+         let inputChannel = lighting.inputChannels.first(where: {$0.channel == channel && $0.controllerId == controller.id}),
          let patternId = inputChannel.patternId {
         if inputChannel.statefull {
           if let trackingSatate = inputChannelStateTracking[inputChannel.id] {
