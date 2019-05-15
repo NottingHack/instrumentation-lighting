@@ -103,7 +103,7 @@
       console.log(JSON.stringify(patternRequestEvent));
       websocket.send(JSON.stringify(patternRequestEvent));
     }
-  
+
     function processEvent(event) {
       switch (event.eventType) {
       case "LightState":
@@ -148,11 +148,11 @@
         return
       }
       console.log("Generating sql for pattern: "+name)
-   
+
       sql.innerHTML = "INSERT INTO lighting_patterns (name) VALUES ('"+name+"');<br>INSERT INTO light_lighting_pattern (lighting_pattern_id, light_id, state) VALUES "
       $( "input[id^='pattern_']" ).each(function () {
           if (this.checked) {
-            // get button state 
+            // get button state
             id = parseInt(this.id.split('_')[2], 10)
             state = $("button[id$='_"+id+"']").text()
             sql.innerHTML += " (LAST_INSERT_ID(), "+ id +", '"+ state +"'),"
@@ -204,6 +204,33 @@
         <td class="tg-9dsr"><input id="pattern_Blue-room_7" type="checkbox" ><button id="Blue-room_7" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
         <td class="tg-9dsr"><input id="pattern_Blue-room_8" type="checkbox" ><button id="Blue-room_8" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
         <td class="tg-9dsr"><input id="pattern_Blue-room_9" type="checkbox" ><button id="Blue-room_9" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+    </table>
+    <br>
+    <table class="tg">
+      <tr>
+        <td class="tg-28sb"><input id="pattern_Corridor_33" type="checkbox" ><button id="Corridor_33" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_Corridor_34" type="checkbox" ><button id="Corridor_34" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_Corridor_35" type="checkbox" ><button id="Corridor_35" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_Corridor_36" type="checkbox" ><button id="Corridor_36" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_Corridor_37" type="checkbox" ><button id="Corridor_37" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+
+      </tr>
+      <tr>
+        <td class="tg-81fp" rowspan="2"><input id="pattern_Members-storage_30" type="checkbox" ><button id="Members-storage_30" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-81fp" rowspan="2"><input id="pattern_Members-storage_31" type="checkbox" ><button id="Members-storage_31" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_Class-room_20" type="checkbox" ><button id="Class-room_20" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_Class-room_21" type="checkbox" ><button id="Class-room_21" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_Class-room_22" type="checkbox" ><button id="Class-room_22" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_Class-room_23" type="checkbox" ><button id="Class-room_23" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_Class-room_24" type="checkbox" ><button id="Class-room_24" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+      <tr>
+        <td class="tg-9ov8"><input id="pattern_Class-room_25" type="checkbox" ><button id="Class-room_25" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_Class-room_26" type="checkbox" ><button id="Class-room_26" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_Class-room_27" type="checkbox" ><button id="Class-room_27" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_Class-room_28" type="checkbox" ><button id="Class-room_28" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_Class-room_29" type="checkbox" ><button id="Class-room_29" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
       </tr>
     </table>
   </div>
