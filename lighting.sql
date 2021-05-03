@@ -50,12 +50,12 @@ CREATE TABLE `floors` (
 # ------------------------------------------------------------
 
 CREATE TABLE `light_lighting_pattern` (
-  `lighting_pattern_id` int(11) NOT NULL,
+  `pattern_id` int(11) NOT NULL,
   `light_id` int(11) NOT NULL,
   `state` varchar(10) NOT NULL,
-  PRIMARY KEY (`lighting_pattern_id`,`light_id`),
+  PRIMARY KEY (`pattern_id`,`light_id`),
   KEY `light_lighting_pattern_fk1` (`light_id`),
-  CONSTRAINT `light_lighting_pattern_fk0` FOREIGN KEY (`lighting_pattern_id`) REFERENCES `lighting_patterns` (`id`),
+  CONSTRAINT `light_lighting_pattern_fk0` FOREIGN KEY (`pattern_id`) REFERENCES `lighting_patterns` (`id`),
   CONSTRAINT `light_lighting_pattern_fk1` FOREIGN KEY (`light_id`) REFERENCES `lights` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -81,14 +81,14 @@ CREATE TABLE `lighting_controllers` (
 CREATE TABLE `lighting_input_channels` (
   `id` int(11) NOT NULL,
   `channel` int(11) NOT NULL,
-  `lighting_controller_id` int(11) NOT NULL,
-  `lighting_pattern_id` int(11) DEFAULT NULL,
+  `controller_id` int(11) NOT NULL,
+  `pattern_id` int(11) DEFAULT NULL,
   `statefull` int(1) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `lighting_input_channels_fk1` (`lighting_pattern_id`),
-  KEY `lighting_input_channels_fk0` (`lighting_controller_id`),
-  CONSTRAINT `lighting_input_channels_fk0` FOREIGN KEY (`lighting_controller_id`) REFERENCES `lighting_controllers` (`id`),
-  CONSTRAINT `lighting_input_channels_fk1` FOREIGN KEY (`lighting_pattern_id`) REFERENCES `lighting_patterns` (`id`)
+  KEY `lighting_input_channels_fk1` (`pattern_id`),
+  KEY `lighting_input_channels_fk0` (`controller_id`),
+  CONSTRAINT `lighting_input_channels_fk0` FOREIGN KEY (`controller_id`) REFERENCES `lighting_controllers` (`id`),
+  CONSTRAINT `lighting_input_channels_fk1` FOREIGN KEY (`pattern_id`) REFERENCES `lighting_patterns` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -99,10 +99,10 @@ CREATE TABLE `lighting_input_channels` (
 CREATE TABLE `lighting_output_channels` (
   `id` int(11) NOT NULL,
   `channel` int(11) NOT NULL,
-  `lighting_controller_id` int(11) NOT NULL,
+  `controller_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `lighting_output_channels_fk0` (`lighting_controller_id`),
-  CONSTRAINT `lighting_output_channels_fk0` FOREIGN KEY (`lighting_controller_id`) REFERENCES `lighting_controllers` (`id`)
+  KEY `lighting_output_channels_fk0` (`controller_id`),
+  CONSTRAINT `lighting_output_channels_fk0` FOREIGN KEY (`controller_id`) REFERENCES `lighting_controllers` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -113,11 +113,11 @@ CREATE TABLE `lighting_output_channels` (
 CREATE TABLE `lighting_patterns` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `next_lighting_pattern_id` int(11) DEFAULT NULL,
+  `next_pattern_id` int(11) DEFAULT NULL,
   `timeout` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `lighting_patterns_fk0` (`next_lighting_pattern_id`),
-  CONSTRAINT `lighting_patterns_fk0` FOREIGN KEY (`next_lighting_pattern_id`) REFERENCES `lighting_patterns` (`id`)
+  KEY `lighting_patterns_fk0` (`next_pattern_id`),
+  CONSTRAINT `lighting_patterns_fk0` FOREIGN KEY (`next_pattern_id`) REFERENCES `lighting_patterns` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -129,12 +129,12 @@ CREATE TABLE `lights` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT '',
   `room_id` int(11) NOT NULL,
-  `lighting_output_channel_id` int(11) NOT NULL,
+  `output_channel_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `lights_fk0` (`room_id`),
-  KEY `lights_fk1` (`lighting_output_channel_id`),
+  KEY `lights_fk1` (`output_channel_id`),
   CONSTRAINT `lights_fk0` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`),
-  CONSTRAINT `lights_fk1` FOREIGN KEY (`lighting_output_channel_id`) REFERENCES `lighting_output_channels` (`id`)
+  CONSTRAINT `lights_fk1` FOREIGN KEY (`output_channel_id`) REFERENCES `lighting_output_channels` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

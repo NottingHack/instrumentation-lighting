@@ -73,7 +73,7 @@ class MySQLService {
   }
   
   func loadBuildings() -> Bool {
-    let select = "SELECT * FROM buildings"
+    let select = "SELECT id, name FROM buildings"
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
@@ -86,7 +86,7 @@ class MySQLService {
   }
 
   func loadFloors() -> Bool {
-    let select = "SELECT * FROM floors"
+    let select = "SELECT id, name, level, building_id FROM floors"
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
@@ -101,7 +101,7 @@ class MySQLService {
   }
 
   func loadRooms() -> Bool {
-    let select = "SELECT * FROM rooms"
+    let select = "SELECT id, name, floor_id FROM rooms"
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
@@ -115,7 +115,7 @@ class MySQLService {
   }
 
   func loadLights() -> Bool {
-    let select = "SELECT * FROM lights"
+    let select = "SELECT id, name, room_id, output_channel_id FROM lights"
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
@@ -130,7 +130,7 @@ class MySQLService {
   }
 
   func loadControllers() -> Bool {
-    let select = "SELECT * FROM lighting_controllers"
+    let select = "SELECT id, name, room_id FROM lighting_controllers"
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
@@ -144,7 +144,7 @@ class MySQLService {
   }
 
   func loadOutputChannels() -> Bool {
-    let select = "SELECT * FROM lighting_output_channels"
+    let select = "SELECT id, channel, controller_id FROM lighting_output_channels"
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
@@ -158,7 +158,7 @@ class MySQLService {
   }
 
   func loadInputChannels() -> Bool {
-    let select = "SELECT * FROM lighting_input_channels"
+    let select = "SELECT id, channel, controller_id, pattern_id, statefull FROM lighting_input_channels"
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
@@ -185,7 +185,7 @@ class MySQLService {
   }
 
   func loadPatterns() -> Bool {
-    let select = "SELECT * FROM lighting_patterns"
+    let select = "SELECT id, name, next_pattern_id, timeout FROM lighting_patterns"
 
     return load(select) { (row) in
       guard let id = Int(row[0]!),
@@ -208,8 +208,8 @@ class MySQLService {
   }
   
   func loadLightPatterns() -> Bool {
-    let select = "SELECT * FROM light_lighting_pattern"
-    
+    let select = "SELECT light_id, pattern_id, state FROM light_lighting_pattern"
+
     return load(select) { (row) in
       guard let lightId = Int(row[1]!),
             let patternId = Int(row[0]!),
