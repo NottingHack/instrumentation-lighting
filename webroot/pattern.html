@@ -171,6 +171,13 @@
     .tg .tg-28sb{border-color:#f8a102}
     .tg .tg-9ov8{border-color:#cb0000}
     .tg .tg-81fp{border-color:#32cb00}
+    .tg .tg-w9no{border-color:#6200c9}
+    .tg .tg-7qyp{border-color:#38fff8}
+    .tg .tg-qpa4{border-color:#f8ff00}
+    .tg .tg-jgo1{border-color:#34cdf9}
+    .w-20{width:20%}
+    .w-13{width:13%}
+
   </style>
 </head>
 
@@ -179,6 +186,7 @@
   <div id="patterns"><h3>View pattern</h3></div>
   <div>
     <h2>Lights</h2>
+    <p>CNCRoomController (G4&G5)</p>
     <table class="tg">
       <tr>
         <td class="tg-28sb"><input id="pattern_CNC-room-corridor_16" type="checkbox" ><button id="CNC-room-corridor_16" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
@@ -207,6 +215,7 @@
       </tr>
     </table>
     <br>
+    <p>ClassRoomController (G6 Part)</p>
     <table class="tg">
       <tr>
         <td class="tg-28sb"><input id="pattern_Corridor_33" type="checkbox" ><button id="Corridor_33" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
@@ -217,8 +226,8 @@
 
       </tr>
       <tr>
-        <td class="tg-81fp" rowspan="2"><input id="pattern_Members-storage_30" type="checkbox" ><button id="Members-storage_30" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
-        <td class="tg-81fp" rowspan="2"><input id="pattern_Members-storage_31" type="checkbox" ><button id="Members-storage_31" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-81fp" rowspan="2"><input id="pattern_Members-storage_Downstairs_30" type="checkbox" ><button id="Members-storage_Downstairs_30" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-81fp" rowspan="2"><input id="pattern_Members-storage_Downstairs_31" type="checkbox" ><button id="Members-storage_Downstairs_31" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
         <td class="tg-9ov8"><input id="pattern_Class-room_20" type="checkbox" ><button id="Class-room_20" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
         <td class="tg-9ov8"><input id="pattern_Class-room_21" type="checkbox" ><button id="Class-room_21" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
         <td class="tg-9ov8"><input id="pattern_Class-room_22" type="checkbox" ><button id="Class-room_22" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
@@ -231,6 +240,78 @@
         <td class="tg-9ov8"><input id="pattern_Class-room_27" type="checkbox" ><button id="Class-room_27" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
         <td class="tg-9ov8"><input id="pattern_Class-room_28" type="checkbox" ><button id="Class-room_28" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
         <td class="tg-9ov8"><input id="pattern_Class-room_29" type="checkbox" ><button id="Class-room_29" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+    </table>
+    <br>
+    <p>WorkshopController (F6 Part)</p>
+    <table class="tg">
+      <tr>
+        <td class="tg-28sb"><input id="pattern_Workshop-walk-far_38" type="checkbox" ><button id="Workshop-walk-far_38" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_Workshop-walk-far_39" type="checkbox" ><button id="Workshop-walk-far_39" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_Workshop-walk-far_40" type="checkbox" ><button id="Workshop-walk-far_40" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8"><input id="pattern_Spray-booth_41" type="checkbox" ><button id="Spray-booth_41" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-jgo1">
+          <input id="pattern_Print-room_42" type="checkbox" ><button id="Print-room_42" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button>White<br>
+          <input id="pattern_Print-room_43" type="checkbox" ><button id="Print-room_43" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button>Red
+        </td>
+      </tr>
+      <tr>
+        <td class="tg-9dsr"><input id="pattern_Metal-working-Upstairs_44" type="checkbox" ><button id="Metal-working-Upstairs_44" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9dsr"><input id="pattern_Metal-working-Upstairs_45" type="checkbox" ><button id="Metal-working-Upstairs_45" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_Workshop-walk-far_46" type="checkbox" ><button id="Workshop-walk-far_46" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-w9no"><input id="pattern_Laser-area_47" type="checkbox" ><button id="Laser-area_47" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-w9no"><input id="pattern_Laser-area_48" type="checkbox" ><button id="Laser-area_48" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+      <tr>
+        <td class="tg-81fp"><input id="pattern_Dusty-area_49" type="checkbox" ><button id="Dusty-area_49" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-81fp"><input id="pattern_Dusty-area_50" type="checkbox" ><button id="Dusty-area_50" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-qpa4"><input id="pattern_Workshop-walk-near_51" type="checkbox" ><button id="Workshop-walk-near_51" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-qpa4"><input id="pattern_Workshop-walk-near_52" type="checkbox" ><button id="Workshop-walk-near_52" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-qpa4"><input id="pattern_Workshop-walk-near_53" type="checkbox" ><button id="Workshop-walk-near_53" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+      <tr>
+        <td class="tg-81fp"><input id="pattern_Dusty-area_54" type="checkbox" ><button id="Dusty-area_54" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-81fp"><input id="pattern_Dusty-area_55" type="checkbox" ><button id="Dusty-area_55" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-7qyp"><input id="pattern_Woodworking_56" type="checkbox" ><button id="Woodworking_56" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-7qyp"><input id="pattern_Woodworking_57" type="checkbox" ><button id="Woodworking_57" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-7qyp"><input id="pattern_Woodworking_58" type="checkbox" ><button id="Woodworking_58" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+    </table>
+    <br>
+    <p>StudioController (F6 Part)</p>
+    <table class="tg" width="50%">
+      <tr>
+        <td class="tg-9dsr w-20"><input id="pattern_Stuido-far_59" type="checkbox" ><button id="Stuido-far_59" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb w-20"><input id="pattern_Studio-mid_60" type="checkbox" ><button id="Studio-mid_60" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8 w-20" colspan="3"><input id="pattern_Stuido-near_61" type="checkbox" ><button id="Stuido-near_61" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-81fp w-20" colspan="3"><input id="pattern_Comfy_62" type="checkbox" ><button id="Comfy_62" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-81fp w-20" colspan="2"><input id="pattern_Comfy_63" type="checkbox" ><button id="Comfy_63" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+      <tr>
+        <td class="tg-9dsr"><input id="pattern_Stuido-far_64" type="checkbox" ><button id="Stuido-far_64" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_Studio-mid_65" type="checkbox" ><button id="Studio-mid_65" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-9ov8" colspan="3"><input id="pattern_Stuido-near_66" type="checkbox" ><button id="Stuido-near_66" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-w9no" colspan="3"><input id="pattern_Comfy-walk_67" type="checkbox" ><button id="Comfy-walk_67" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-w9no" colspan="2"><input id="pattern_Comfy-walk_68" type="checkbox" ><button id="Comfy-walk_68" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+      <tr>
+        <td class="tg-7qyp"><input id="pattern_Studio-walk_69" type="checkbox" ><button id="Studio-walk_69" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-7qyp"><input id="pattern_Studio-walk_70" type="checkbox" ><button id="Studio-walk_70" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-7qyp" colspan="3"><input id="pattern_Studio-walk_71" type="checkbox" ><button id="Studio-walk_71" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-qpa4" colspan="3"><input id="pattern_Members-storage-Upstairs_72" type="checkbox" ><button id="Members-storage-Upstairs_72" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-qpa4" rowspan="2"><input id="pattern_Members-storage-Upstairs_73" type="checkbox" ><button id="Members-storage-Upstairs_73" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-jgo1" rowspan="2"><input id="pattern_Airlock_74" type="checkbox" ><button id="Airlock_74" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+      <tr>
+        <td class="tg-9dsr"><input id="pattern_Toilets_75" type="checkbox" ><button id="Toilets_75" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_Kitchen_76" type="checkbox" ><button id="Kitchen_76" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb w-13" colspan="2" rowspan="2"><input id="pattern_Craft_77" type="checkbox" ><button id="Craft_77" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb w-13" colspan="2" rowspan="2"><input id="pattern_Craft_78" type="checkbox" ><button id="Craft_78" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb w-13" colspan="2" rowspan="2"><input id="pattern_Craft_79" type="checkbox" ><button id="Craft_79" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+      </tr>
+      <tr>
+        <td class="tg-9dsr"><input id="pattern_Toilets_80" type="checkbox" ><button id="Toilets_80" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
+        <td class="tg-28sb"><input id="pattern_Kitchen_81" type="checkbox" ><button id="Kitchen_81" onclick="requestNewState(this)" style="width: 50px; background-color: orange;">OFF</button></td>
       </tr>
     </table>
   </div>
