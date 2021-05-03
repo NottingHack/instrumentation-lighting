@@ -26,7 +26,7 @@ class MqttService {
   let statusReqsponseTopic = "nh/status/res"
   let stateTopic = "nh/li/+/+/state"
   let setTopic = "nh/li/{controller}/{channel}/set"
-  let stateTopicPattern = "nh/li/(\\S+)/(I\\d|\\d{2})/state"
+  let stateTopicPattern = "nh/li/(\\S+)/(I\\d+|\\d{2})/state"
   let mosquitto: Mosquitto
   public var stateDelagate: ControllerStateDelagate?
   
