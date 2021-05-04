@@ -12,14 +12,14 @@ import Foundation
 
 //MARK: -
 class MySQLService {
-  
+
   private let host: String
   private let user: String
   private let password: String
   private let database: String
-  
+
   let client = MySQL()
-  
+
   init(host: String, user: String, password: String, database: String) {
     self.host = host
     self.user = user
@@ -27,16 +27,16 @@ class MySQLService {
     self.database = database
     let _ = client.setOption(.MYSQL_SET_CHARSET_NAME, "utf8")
   }
-  
+
   func loadModels() -> Bool {
     guard client.connect(host: host, user: user, password: password, db: database) else {
       Log.info(message: "Failure connecting to data server \(host)")
       Log.info(message: client.errorMessage())
       return false
     }
-    
+
     lighting = Lighting()
-    
+
     defer {
       client.close()  // defer ensures we close our db connection at the end of this request
     }
@@ -56,22 +56,22 @@ class MySQLService {
     Log.info(message: "MySQL loaded model")
     return true
   }
-  
+
   func load(_ select: String, callback: (MySQL.Results.Element) -> ()) -> Bool {
     guard client.query(statement: select) else {
       Log.error(message: client.errorMessage())
       return false
     }
-    
+
     let results = client.storeResults()!
-    
+
     results.forEachRow(callback: callback)
 
     results.close()
-    
+
     return true
   }
-  
+
   func loadBuildings() -> Bool {
     let select = "SELECT id, name FROM buildings"
 
@@ -80,7 +80,7 @@ class MySQLService {
             let name = row[1] else {
         return
       }
-      
+
       lighting.buildings.append(Building(id: id, name: name))
     }
   }
@@ -95,7 +95,7 @@ class MySQLService {
             let buildingId = Int(row[3]!) else {
         return
       }
-      
+
       lighting.floors.append(Floor(id: id, name: name, level: level, buildingId: buildingId))
     }
   }
@@ -109,7 +109,7 @@ class MySQLService {
             let floorId = Int(row[2]!) else {
         return
       }
-      
+
       lighting.rooms.append(Room(id: id, name: name, floorId: floorId))
     }
   }
@@ -124,7 +124,7 @@ class MySQLService {
             let outputChannelId = Int(row[3]!) else {
         return
       }
-      
+
       lighting.lights.append(Light(id: id, name: name, roomId: roomId, outputChannelId: outputChannelId))
     }
   }
@@ -138,7 +138,7 @@ class MySQLService {
             let roomId = Int(row[2]!) else {
         return
       }
-      
+
       lighting.controllers.append(Controller(id: id, name: name, roomId: roomId))
     }
   }
@@ -152,7 +152,7 @@ class MySQLService {
             let controllerId = Int(row[2]!) else {
         return
       }
-      
+
       lighting.outputChannels.append(OutputChannel(id: id, channel: channel, controllerId: controllerId))
     }
   }
@@ -167,20 +167,20 @@ class MySQLService {
             let statefull = Int(row[4]!) else {
         return
       }
-      
+
       var patternId: Int?
       if let patternString = row[3] {
         patternId = Int(patternString)
       }
-    
+
       lighting.inputChannels.append(InputChannel(id: id, channel: channel, controllerId: controllerId, patternId: patternId, statefull: statefull == 1))
-      
+
       if !inputChannelStateTracking.keys.contains(id) {
         // only add the id tracking if its not allready therey
         // this way we keep state over DB reload
         inputChannelStateTracking[id] = false
       }
-      
+
     }
   }
 
@@ -192,21 +192,21 @@ class MySQLService {
             let name = row[1] else {
         return
       }
-      
+
       var nextPatternId: Int?
       if let nextPatternString = row[2] {
         nextPatternId = Int(nextPatternString)
       }
-      
+
       var timeout: Int?
       if let timeoutString = row[3] {
         timeout = Int(timeoutString)
       }
-      
+
       lighting.patterns.append(Pattern(id: id, name: name, nextPatternId: nextPatternId, timeout: timeout))
     }
   }
-  
+
   func loadLightPatterns() -> Bool {
     let select = "SELECT light_id, pattern_id, state FROM light_lighting_pattern"
 
@@ -216,7 +216,7 @@ class MySQLService {
             let state = ChannelState(rawValue: row[2]!) else {
         return
       }
-      
+
       lighting.lightPatterns.append(LigthPattern(lightId: lightId, patternId: patternId, state: state))
     }
   }

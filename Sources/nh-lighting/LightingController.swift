@@ -16,20 +16,20 @@ import PerfectWebSockets
 
 // MARK: -
 class LightingController {
-  
+
   let serviceName: String
-  
+
   let manager = ConfigurationManager()
-  
+
   let mysql: MySQLService
   let mqtt: MqttService
   let http = HTTPServer()
   var wsClients: [LightingClient: WebSocket] = [:]
   var sockets: [WebSocket] = []
-  
+
   var currentStates = [CurrentLightState]()
   let processQueue: DispatchQueue
-  
+
   init() {
     Log.info(message: "nh-lighting: Starting")
     var configPath = "./config.json"
@@ -41,47 +41,47 @@ class LightingController {
         configPath = "../../../config.json" // location for use with SwitPM
       #endif
     }
-    
+
     manager.load(file: configPath).load(.environmentVariables).load(.commandLineArguments)
     serviceName = manager["serviceName"] as! String
-    
+
     processQueue = DispatchQueue(label: "\(serviceName).process")
-    
+
     mysql = MySQLService(host: manager["mysql:host"] as! String, user: manager["mysql:user"] as! String, password: manager["mysql:password"] as! String, database: manager["mysql:database"] as! String)
-    
+
     mqtt = MqttService(clientId: serviceName, host: manager["mqtt:host"] as! String, port: Int32(manager["mqtt:port"] as! Int))
     mqtt.stateDelagate = self
-    
+
     if let documentRoot = manager["http:documentRoot"] as! String? {
       http.documentRoot = documentRoot
     }
-    
+
     if let address = manager["http:address"] as! String? {
       http.serverAddress = address
     }
-    
+
     if let port = manager["http:port"] as? UInt16? ?? 8181 {
       http.serverPort = port
     }
-    
+
     http.addRoutes(makeRoutes())
   }
-  
+
   func start() {
     guard mysql.loadModels() else {
       Log.error(message: "Failed to load models")
       // TODO: try agian or quit
       return
     }
-    
+
     do {
       try mqtt.connect()
     } catch let error {
       Log.error(message: "Mqtt failed to connect with \(error)")
       // TODO: try again?
     }
-    
-    
+
+
     do {
       // Launch the HTTP server on port 8181
       try http.start()
@@ -91,28 +91,28 @@ class LightingController {
       Log.error(message: "\(error)")
     }
   }
-  
+
   func makeRoutes() -> Routes {
     var routes = Routes()
-    
+
     routes.add(method: .get, uri: "/lighting", handler: {
       request, response in
       WebSocketHandler(handlerProducer: {
         (request: HTTPRequest, protocols: [String]) -> WebSocketSessionHandler? in
-        
+
         // Check to make sure the client is requesting our "echo" service.
         guard protocols.contains("lighting") else {
           return nil
         }
-        
+
         // Return our service handler.
         return LightingHandler(delegate: self)
       }).handleRequest(request: request, response: response)
     })
-    
+
     return routes
   }
-  
+
   func reload() {
     Log.info(message: "Caught SIGHUP")
     guard mysql.loadModels() else {
@@ -120,10 +120,10 @@ class LightingController {
       // TODO: try agian or quit
       return
     }
-    
+
     // TODO: let clients know they need to reconnet? or to wipe and reload there description
   }
-  
+
   func findLights(forChannel channel: Int, fromController controllerName: String) -> [Light]? {
     var lights: [Light]?
     if let controller = lighting.controllers.first(where: {$0.name == controllerName}),
@@ -131,12 +131,12 @@ class LightingController {
       lights = lighting.lights.filter {
         $0.outputChannelId == channel.id
       }
-      
+
     }
-    
+
     return lights
   }
-  
+
   func updateLightState(lightId: Int, newState state: ChannelState) {
     if let lightState = currentStates.first(where: {$0.id == lightId}) {
       lightState.state = state
@@ -144,7 +144,7 @@ class LightingController {
       currentStates.append(CurrentLightState(id: lightId, state: state))
     }
   }
-  
+
   func findControllerAndOutputChannel(forEvent event: RequestEvent) -> (controller: Controller, outputChannel: OutputChannel)? {
     if let lightId = event.light,
        let light = lighting.lights.first(where: {$0.id == lightId}),
@@ -154,13 +154,13 @@ class LightingController {
     }
     return nil
   }
-  
+
   func clientConnected(fromSocket socket: WebSocket) {
     describeRooms(toSocket: socket)
     describeCurrentStates(toSocket: socket)
     describePatterns(toSocket: socket)
   }
-  
+
   func describeRooms(toSocket socket: WebSocket) {
     var roomDescriptionEvents: [RoomDescriptionEvent] = []
     for room in lighting.rooms {
@@ -172,17 +172,17 @@ class LightingController {
       let roomDescription = RoomDescriptionEvent(room: room.name, lights:lightIds)
       roomDescriptionEvents.append(roomDescription)
     }
-    
+
     do {
       let jsonEvent = try JSONEncoder().encode(roomDescriptionEvents)
       socket.sendStringMessage(string: String(data: jsonEvent, encoding: .utf8)!, final: true) {
-        
+
       }
     } catch {
-      
+
     }
   }
-  
+
   func describeCurrentStates(toSocket socket: WebSocket) {
     var lightStateEvents: [LightStateEvent] = []
     for lightState in currentStates {
@@ -192,20 +192,20 @@ class LightingController {
         lightStateEvents.append(lightStateEvent)
       }
     }
-    
+
     do {
       let jsonEvent = try JSONEncoder().encode(lightStateEvents)
       socket.sendStringMessage(string: String(data: jsonEvent, encoding: .utf8)!, final: true) {
-        
+
       }
     } catch {
-      
+
     }
   }
-  
+
   func describePatterns(toSocket socket: WebSocket) {
     var patternDescriptionEvents: [PatternDescrptionEvent] = []
-    
+
     for pattern in lighting.patterns {
       var lightStates: [PatternDescrptionEvent.LightState] = []
       let lightPatterns = lighting.lightPatterns.filter({$0.patternId == pattern.id})
@@ -216,32 +216,32 @@ class LightingController {
           lightStates.append(lightState)
         }
       }
-      
+
       let roomDescription = PatternDescrptionEvent(patternId: pattern.id, name: pattern.name, lights: lightStates)
       patternDescriptionEvents.append(roomDescription)
     }
-    
+
     do {
       let jsonEvent = try JSONEncoder().encode(patternDescriptionEvents)
       socket.sendStringMessage(string: String(data: jsonEvent, encoding: .utf8)!, final: true) {
-        
+
       }
     } catch {
-      
+
     }
   }
-  
+
   func processLight(request: RequestEvent, forSocket socket: WebSocket) {
     guard let state = request.state,
       let (controller, outputChannel) = findControllerAndOutputChannel(forEvent: request) else {
         Log.warning(message: "Incomplete LightRequest: \(request)")
         return
     }
-    
+
     // TODO: Check client has permission to make this request
     mqtt.request(newState: state, forOutputChannel: outputChannel, onController: controller)
   }
-  
+
   func processPattern(patternId: Int, inverted: Bool = false) {
     if let pattern = lighting.patterns.first(where: {$0.id == patternId}){
       let lightPatterns = lighting.lightPatterns.filter({$0.patternId == pattern.id})
@@ -251,9 +251,9 @@ class LightingController {
            let outputChannel = lighting.outputChannels.first(where: {$0.id == light.outputChannelId}),
            let controller = lighting.controllers.first(where: {$0.id == outputChannel.controllerId}) {
           // TODO: Check client has permission to make this request
-          
+
           var newState = lightPattern.state
-          
+
           if inverted {
             switch lightPattern.state {
             case .ON:
@@ -264,7 +264,7 @@ class LightingController {
               break
             }
           }
-          
+
           self.mqtt.request(newState: newState, forOutputChannel: outputChannel, onController: controller)
         }
       }
@@ -278,14 +278,14 @@ class LightingController {
       }
     }
   }
-  
+
   // processPattern for a json request
   func processPattern(request: RequestEvent, forSocket socket: WebSocket) {
     if let patternId = request.patternId {
       processPattern(patternId: patternId)
     }
   }
-  
+
   // processPattern for a controller input channel
   func processPattern(forChannel channel: Int, fromController controllerName: String, withState state: ChannelState) {
     if (state == .ON) {
@@ -299,7 +299,7 @@ class LightingController {
             } else {
               processPattern(patternId: patternId)
             }
-            
+
             // flip the tracking state
             inputChannelStateTracking[inputChannel.id] = !trackingSatate
           }
@@ -316,7 +316,7 @@ extension LightingController: ControllerStateDelagate {
   func didReceive(_ state: ChannelState, forChannel channel: String, fromController controllerName: String) {
     processQueue.async {
       Log.info(message: "didReceive message: \(controllerName, channel, state)")
-      
+
       if channel.contains("I") {
         // deal with input channel
         var inputChannel = channel
@@ -324,11 +324,11 @@ extension LightingController: ControllerStateDelagate {
         self.processPattern(forChannel: Int(inputChannel)!, fromController: controllerName, withState: state)
         return
       }
-      
+
       guard let lights = self.findLights(forChannel: Int(channel)!, fromController: controllerName) else {
         return
       }
-      
+
       for light in lights {
         self.updateLightState(lightId: light.id, newState: state)
         // post out new state to WS
@@ -337,20 +337,20 @@ extension LightingController: ControllerStateDelagate {
             Log.error(message: "didReveive: Can not find room for light: \(light)")
             continue
         }
-        
+
         let lightStateEvent = LightStateEvent(room: room.name, light: light.id, state: state)
-        
+
         do {
           let jsonEvent = try JSONEncoder().encode(lightStateEvent)
           // TODO: use the wsClients dict when we start filling it
           for socket in self.sockets {
             // TODO: dispatch to an concurrent async queue?
             socket.sendStringMessage(string: String(data: jsonEvent, encoding: .utf8)!, final: true) {
-                
+
             }
           }
         } catch {
-            
+
         }
       }
     }
@@ -367,7 +367,7 @@ extension LightingController: LightingHandlerDelegate {
     }
     callback(true)
   }
-  
+
   func removeClient(_ socket: WebSocket, callback: @escaping (Bool) -> ()) {
     Log.info(message: "removeClient: \(socket)")
     // TODO: use wsClients dict
@@ -376,7 +376,7 @@ extension LightingController: LightingHandlerDelegate {
     }
     callback(true)
   }
-  
+
   func processRequestMessage(_ socket: WebSocket, event: RequestEvent) {
     processQueue.async {
       Log.info(message: "processRequestMessage: \(event)")
