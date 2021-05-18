@@ -149,7 +149,7 @@
       }
       console.log("Generating sql for pattern: "+name)
 
-      sql.innerHTML = "INSERT INTO lighting_patterns (name) VALUES ('"+name+"');<br>INSERT INTO light_lighting_pattern (lighting_pattern_id, light_id, state) VALUES "
+      sql.innerHTML = "INSERT INTO lighting_patterns (name) VALUES ('"+name+"');<br>INSERT INTO light_lighting_pattern (pattern_id, light_id, state) VALUES "
       $( "input[id^='pattern_']" ).each(function () {
           if (this.checked) {
             // get button state
